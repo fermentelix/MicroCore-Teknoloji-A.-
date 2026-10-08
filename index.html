@@ -256,95 +256,193 @@
             margin-bottom: 1rem;
         }
 
-        /* --- ÜRÜN KATALOĞU --- */
-        .product-grid {
+        /* --- ÜRÜN KATALOĞU (YENİ DARK TEMA & TESLİMAT KOŞULLARI) --- */
+        .product-grid-dark {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .product-card {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
+        .product-card-dark {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
             border-radius: 12px;
             padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            color: #f8fafc;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-        }
-
-        .card-tag {
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 0.3rem 0.6rem;
-            border-radius: 6px;
-            display: inline-block;
+        .product-card-dark h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
             margin-bottom: 1rem;
-            align-self: flex-start;
         }
 
-        .tag-b2b { background-color: #dbeafe; color: #1e40af; }
-        .tag-b2c { background-color: #f3e8ff; color: #6b21a8; }
-
-        .product-card h3 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .product-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        .product-desc-dark {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
             flex-grow: 1;
         }
 
-        .price-box {
-            margin: 1.5rem 0;
-            padding: 1rem 0;
-            border-top: 1px dashed var(--border);
-            border-bottom: 1px dashed var(--border);
+        .tags-dark {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
+        .tags-dark span {
+            border: 1px solid #334155;
+            background-color: transparent;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 4px;
         }
 
-        .stock-info {
+        .price-box-dark {
+            background-color: #0b1120;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stock-badge-dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #34d399;
             font-size: 0.85rem;
-            font-weight: 600;
-            color: #059669;
-            margin-top: 0.3rem;
+            font-weight: 700;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .stock-badge-dark.warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #fbbf24;
+            border-color: rgba(245, 158, 11, 0.2);
         }
 
-        .btn-add-cart {
+        .dot-green {
+            width: 8px; height: 8px; background-color: #34d399; border-radius: 50%;
+        }
+        
+        .dot-orange {
+            width: 8px; height: 8px; background-color: #fbbf24; border-radius: 50%;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #1e293b;
+            padding-bottom: 0.5rem;
+        }
+
+        .price-row:last-of-type {
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .price-row .label {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .price-row .val-tl {
+            color: #38bdf8;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .price-row .val-eu {
+            color: #38bdf8;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .price-box-dark .note {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #1e293b;
+        }
+        
+        .btn-add-cart-dark {
             width: 100%;
-            background-color: #f8fafc;
-            color: var(--accent);
-            border: 2px solid var(--accent);
-            padding: 0.8rem;
-            font-size: 1rem;
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem;
+            font-size: 1.05rem;
             font-weight: 700;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background 0.2s;
+        }
+        
+        .btn-add-cart-dark:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Teslimat ve Koşullar Alanı */
+        .conditions-section {
+            background-color: #0f172a;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .conditions-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
             display: flex;
+            align-items: center;
             justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .condition-card {
+            background-color: #1e293b;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #334155;
+        }
+
+        .condition-card h4 {
+            color: #f8fafc;
+            font-size: 1.05rem;
+            margin-bottom: 0.8rem;
+            display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .btn-add-cart:hover {
-            background-color: var(--accent);
-            color: #ffffff;
+        .condition-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* --- SİPARİŞ / CHECKOUT FORMU --- */
@@ -753,38 +851,93 @@
             </div>
         </section>
 
-        <!-- 4. ÜRÜN KATALOĞU -->
+        <!-- 4. ÜRÜN KATALOĞU (GÜNCELLENMİŞ DARK TEMA) -->
         <section id="katalog">
             <div class="section-header">
                 <h2>MikroCore Satış Kataloğu</h2>
                 <p>Ürünlerinizi sepetinize ekleyerek B2B kurumsal veya B2C bireysel siparişinizi oluşturun.</p>
             </div>
 
-            <div class="product-grid">
-                <div class="product-card">
-                    <span class="card-tag tag-b2b">KURUMSAL B2B (UZMANLIK)</span>
-                    <h3>MC-26 İşlemci Modülü</h3>
-                    <p class="product-desc">Endüstri 4.0 donanım üreticileri için optimize edilmiş, düşük enerji tüketimli yüksek verimli işlemci mimarisi.</p>
-                    <div class="price-box">
-                        <div class="price">170 TL</div>
-                        <div class="stock-info">📦 3.670 Adet Hazır Stok</div>
+            <div class="product-grid-dark">
+                <!-- İşlemci Modülü -->
+                <div class="product-card-dark">
+                    <h3>MC-26 İşlemci Modülü (B2B)</h3>
+                    <p class="product-desc-dark">Donanım üretimi için zorunlu olan temel modülümüz. Diğer şirketlere hızlı ve toplu olarak temin edilir.</p>
+                    
+                    <div class="tags-dark">
+                        <span>Yüksek Hassasiyet</span><span>OEM Uyumlu</span><span>B2B Toplu Satış</span>
                     </div>
-                    <button class="btn-add-cart" onclick="addToCart('MC-26 İşlemci Modülü', 170)">
+                    
+                    <div class="price-box-dark">
+                        <div class="stock-badge-dark">
+                            <span class="dot-green"></span> 3.670 Adet Yüksek Stok
+                        </div>
+                        <div class="price-row">
+                            <span class="label">Ulusal Pazar:</span> 
+                            <span class="val-tl">170 ₺</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="label">Yurt Dışı Pazarı:</span> 
+                            <span class="val-eu">5 €</span>
+                        </div>
+                        <div class="note">Toplu alımlarda pazarlık ve özel indirim yapılır.</div>
+                    </div>
+                    
+                    <button class="btn-add-cart-dark" onclick="addToCart('MC-26 İşlemci Modülü', 170)">
                         + Sepete Ekle
                     </button>
                 </div>
 
-                <div class="product-card">
-                    <span class="card-tag tag-b2c">PERAKENDE B2C</span>
-                    <h3>SmartBox Akıllı Asistan</h3>
-                    <p class="product-desc">Yeni nesil akıllı ev ekosistemleri için, sesli komut ve merkezi otomasyon özellikli akıllı yaşam cihazı.</p>
-                    <div class="price-box">
-                        <div class="price">5.500 TL</div>
-                        <div class="stock-info">⚡ Yüksek Hacimli / Ön Sipariş</div>
+                <!-- SmartBox -->
+                <div class="product-card-dark">
+                    <h3>SmartBox</h3>
+                    <p class="product-desc-dark">Tüm parçaları bir araya getirilerek üretilen ve doğrudan satışa hazır nihai ürünümüzdür.</p>
+                    
+                    <div class="tags-dark">
+                        <span>Tak & Çalıştır</span><span>Tam Entegre</span><span>Perakende Garanti</span>
                     </div>
-                    <button class="btn-add-cart" onclick="addToCart('SmartBox Akıllı Asistan', 5500)">
+                    
+                    <div class="price-box-dark">
+                        <div class="stock-badge-dark warning">
+                            <span class="dot-orange"></span> Sınırlı Stok (Son Ürünler)
+                        </div>
+                        <div class="price-row">
+                            <span class="label">Ulusal Pazar:</span> 
+                            <span class="val-tl">5.500 ₺</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="label">Yurt Dışı Pazarı:</span> 
+                            <span class="val-eu">155 €</span>
+                        </div>
+                        <div class="note">Tam montajlı, garantili ve sevkiyata hazır nihai kutu.</div>
+                    </div>
+                    
+                    <button class="btn-add-cart-dark" onclick="addToCart('SmartBox Akıllı Asistan', 5500)">
                         + Sepete Ekle
                     </button>
+                </div>
+            </div>
+
+            <!-- Teslimat ve Koşullar (GÖRSELDEKİ EKLENTİ) -->
+            <div class="conditions-section">
+                <h3 class="conditions-title">⚡ Teslimat, Ödeme ve Ticaret Koşulları</h3>
+                <div class="conditions-grid">
+                    <div class="condition-card">
+                        <h4>📦 Anında Stoktan Teslim</h4>
+                        <p>Yüksek adetli MC-26 hazır stoğu ile beklemeden anında sevkiyat imkânı.</p>
+                    </div>
+                    <div class="condition-card">
+                        <h4>🔄 Takas Seçeneği</h4>
+                        <p>Karşılıklı anlaşma çerçevesinde ürün ve bileşen takası / barter yapılır.</p>
+                    </div>
+                    <div class="condition-card">
+                        <h4>💳 Esnek Ödeme</h4>
+                        <p>İş ortaklarımıza özel peşin veya vadeli esnek ödeme seçenekleri mevcuttur.</p>
+                    </div>
+                    <div class="condition-card">
+                        <h4>🤝 Toplu Alım İndirimi</h4>
+                        <p>Yüksek adetli B2B siparişlerde pazarlık ve cazip fiyat indirimi sağlanır.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -866,7 +1019,7 @@
             </div>
         </section>
 
-        <!-- 6. İLETİŞİM / E-POSTA ADRESLERİ (YENİ VE DAHA BELİRGİN EKLENDİ) -->
+        <!-- 6. İLETİŞİM / E-POSTA ADRESLERİ -->
         <section id="iletisim">
             <div class="section-header">
                 <h2>İletişim Bilgilerimiz</h2>
