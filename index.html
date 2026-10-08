@@ -536,16 +536,112 @@
             opacity: 0.95;
         }
 
-        .alert-box {
-            background-color: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            color: #fbbf24;
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
+        /* --- BAŞARILI SİPARİŞ EKRANI (GÖRSELE BİREBİR UYGUN TASARIM) --- */
+        .success-screen {
+            background-color: #0b1524;
+            border: 1px solid #1e2d4d;
+            border-radius: 12px;
+            padding: 4rem 2rem;
+            text-align: center;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            height: 100%;
+            justify-content: center;
+        }
+        
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #064e3b;
+            color: #34d399;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            margin: 0 auto;
+        }
+        
+        .success-title {
+            color: #34d399;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        
+        .success-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            max-width: 500px;
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+        
+        .tracking-box {
+            border: 1px dashed #1e40af;
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 1rem auto;
+            width: fit-content;
+            letter-spacing: 1px;
+        }
+        
+        .btn-new-order {
+            background-color: #1e293b;
+            color: #f8fafc;
+            border: 1px solid #334155;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+            margin-top: 1rem;
+        }
+        
+        .btn-new-order:hover {
+            background-color: #334155;
+        }
+
+        /* --- İLETİŞİM KARTLARI --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .contact-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .contact-card h4 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        .contact-card p.title {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .contact-card a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+        }
+        .contact-card a:hover {
+            color: var(--accent);
         }
 
         footer {
@@ -570,6 +666,7 @@
                 <a href="#hakkimizda">Hakkımızda</a>
                 <a href="#ekip">Yönetim</a>
                 <a href="#katalog">Ürünler</a>
+                <a href="#iletisim">İletişim</a>
                 <a href="#checkout" class="cart-nav-btn">
                     🛒 Sepet <span id="navCartCount" style="background:#2563eb; color:white; padding:0.1rem 0.5rem; border-radius:10px; font-size:0.8rem;">0</span>
                 </a>
@@ -596,8 +693,6 @@
                 <div class="info-card">
                     <h3>Biz Kimiz?</h3>
                     <p>MikroCore Teknoloji A.Ş., kurumsal donanım pazarında uzmanlaşmış yapısıyla sektörün lider teknoloji ekosistemlerinden biridir. Çevik yönetim modellerini (Agile) benimseyen karar destek mekanizmalarımız ve yüksek üretim kapasitemizle, iş ortaklarımızın operasyonel gereksinimlerine eksiksiz yanıt veriyoruz.</p>
-                    <br>
-                    <p>Kurumsal yönetişim ve sosyal sorumluluk ilkelerimiz çerçevesinde, afet müdahale fonlarına ve sürdürülebilirlik projelerine aktif katkı sağlayarak sektörde güven ve değer inşa ediyoruz.</p>
                 </div>
                 <div class="info-card">
                     <h3>Misyon ve Vizyonumuz</h3>
@@ -625,12 +720,6 @@
                         <div class="member-name">İhsan Kaya</div>
                         <div class="member-title">Genel Müdür (CEO) | Teknoloji ve İş Geliştirme</div>
                         <div class="member-desc">Şirketin genel stratejisinin ve büyüme vizyonunun belirlenmesini yönetir. Teknoloji yatırımları, operasyonel senkronizasyon ve kurumsal performanstan sorumludur.</div>
-                        <div class="skills-heading">YETKİNLİKLER:</div>
-                        <div class="skills-list">
-                            <span class="skill-tag">Stratejik Yönetim</span>
-                            <span class="skill-tag">İş Geliştirme</span>
-                            <span class="skill-tag">Liderlik</span>
-                        </div>
                     </div>
                 </div>
 
@@ -644,12 +733,6 @@
                         <div class="member-name">Ayça Nur Selim</div>
                         <div class="member-title">Dijital Pazarlama ve Ürün Yöneticisi</div>
                         <div class="member-desc">B2B/B2C pazarlama stratejilerinde uzmandır. Marka konumlandırma, büyüme stratejileri ve e-ticaret altyapılarının yönetiminden sorumludur.</div>
-                        <div class="skills-heading">YETKİNLİKLER:</div>
-                        <div class="skills-list">
-                            <span class="skill-tag">Growth Hacking</span>
-                            <span class="skill-tag">B2B/B2C Satış</span>
-                            <span class="skill-tag">Go-to-Market</span>
-                        </div>
                     </div>
                 </div>
 
@@ -663,12 +746,6 @@
                         <div class="member-name">Enes Aydoğan</div>
                         <div class="member-title">Operasyon ve Lojistik Direktörü</div>
                         <div class="member-desc">Üretim planlaması ve operasyonel modelleme alanındaki yetkinliklerini birleştiren analitik lider. Montaj bandı verimliliği ve B2B lojistik akışından sorumludur.</div>
-                        <div class="skills-heading">YETKİNLİKLER:</div>
-                        <div class="skills-list">
-                            <span class="skill-tag">Tedarik Zinciri</span>
-                            <span class="skill-tag">Kapasite Planlama</span>
-                            <span class="skill-tag">B2B Takas</span>
-                        </div>
                     </div>
                 </div>
 
@@ -682,12 +759,6 @@
                         <div class="member-name">Hamza Emin Demir</div>
                         <div class="member-title">Finans Müdürü | Risk ve Etik Sorumlusu</div>
                         <div class="member-desc">Finansal süreçlerin şeffaf yürütülmesini sağlayan; nakit akışı yönetimi ile operasyonların kurumsal etik ilkelerine uygunluğunu denetleyen yönetici.</div>
-                        <div class="skills-heading">YETKİNLİKLER:</div>
-                        <div class="skills-list">
-                            <span class="skill-tag">Nakit Akışı</span>
-                            <span class="skill-tag">Risk Analizi</span>
-                            <span class="skill-tag">Kurumsal Etik</span>
-                        </div>
                     </div>
                 </div>
 
@@ -701,12 +772,6 @@
                         <div class="member-name">Zehra Yılmaz</div>
                         <div class="member-title">BT ve Veri Yapıları Müdürü</div>
                         <div class="member-desc">Kurumsal teknoloji altyapısı, veri mimarisi ve bilgi güvenliği alanlarında deneyimli BT yöneticisi. İş hedeflerini teknoloji çözümleriyle buluşturur.</div>
-                        <div class="skills-heading">YETKİNLİKLER:</div>
-                        <div class="skills-list">
-                            <span class="skill-tag">BT Altyapı Yönetimi</span>
-                            <span class="skill-tag">Veri Mimarisi</span>
-                            <span class="skill-tag">Sistem Güvenliği</span>
-                        </div>
                     </div>
                 </div>
 
@@ -720,12 +785,6 @@
                         <div class="member-name">Muhammet Bilal Kara</div>
                         <div class="member-title">İnsan Kaynakları ve Tedarik Müdürü</div>
                         <div class="member-desc">İnsan kaynağı ihtiyaçlarının değerlendirilmesi, çalışan bağlılığı ile satın alma süreçlerinin takibini başarıyla koordine eden organizasyon yöneticisi.</div>
-                        <div class="skills-heading">YETKİNLİKLER:</div>
-                        <div class="skills-list">
-                            <span class="skill-tag">İnsan Kaynakları</span>
-                            <span class="skill-tag">Satın Alma</span>
-                            <span class="skill-tag">Ekip Koordinasyonu</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -747,7 +806,7 @@
                     
                     <div class="price-box">
                         <div class="price">170 TL</div>
-                        <div class="stock-info">📦 2000 Adet Hazır Stok</div>
+                        <div class="stock-info">📦 3.670 Adet Hazır Stok</div>
                     </div>
                     
                     <button class="btn-add-cart" onclick="addToCart('MC-26 İşlemci Modülü', 170)">
@@ -762,11 +821,11 @@
                     <p class="product-desc">Yeni nesil akıllı ev ekosistemleri için, sesli komut ve merkezi otomasyon özellikli akıllı yaşam cihazı.</p>
                     
                     <div class="price-box">
-                        <div class="price">10000TL</div>
+                        <div class="price">5.500 TL</div>
                         <div class="stock-info">⚡ Yüksek Hacimli / Ön Sipariş</div>
                     </div>
                     
-                    <button class="btn-add-cart" onclick="addToCart('SmartBox Akıllı Asistan', 10000)">
+                    <button class="btn-add-cart" onclick="addToCart('SmartBox Akıllı Asistan', 5500)">
                         + Sepete Ekle
                     </button>
                 </div>
@@ -793,14 +852,9 @@
                     </div>
                 </div>
 
-                <!-- Müşteri ve Ödeme Formu -->
-                <div>
-                    <div class="alert-box">
-                        <span>⚠️</span>
-                        <span><strong>Web Alışverişi Uyarısı:</strong> Satın alma bağlantısı ve sepet onayı, <strong>lig yöneticisinin geçiş onayından sonra</strong> tam olarak etkinleşecektir.</span>
-                    </div>
-
-                    <form onsubmit="processCheckout(event)">
+                <!-- FORM ALANI VEYA BAŞARI EKRANI -->
+                <div id="formViewArea">
+                    <form id="orderForm" onsubmit="processCheckout(event)">
                         <div class="form-grid-2">
                             <div class="form-group-dark">
                                 <label>Ad Soyad / Yetkili</label>
@@ -836,6 +890,58 @@
                         </button>
                     </form>
                 </div>
+
+                <!-- BAŞARILI SİPARİŞ EKRANI (GİZLİ BAŞLAR) -->
+                <div id="successViewArea" class="success-screen" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <div class="success-title">Sipariş Talebiniz Başarıyla Alındı!</div>
+                    <div class="success-desc">Tedarik ve Satış departmanımız talebinizi inceleyerek belirtmiş olduğunuz kurumsal e-posta ve telefon üzerinden en kısa sürede sizinle iletişime geçecektir.</div>
+                    
+                    <div class="tracking-box" id="trackingCode">Takip Kodu: STK-3812</div>
+                    
+                    <button class="btn-new-order" onclick="resetOrder()">Yeni Sipariş Talebi Oluştur</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. İLETİŞİM / E-POSTA ADRESLERİ -->
+        <section id="iletisim">
+            <div class="section-header">
+                <h2>İletişim Bilgilerimiz</h2>
+                <p>Kurumsal görüşmeler ve iş ortaklıkları için departman yetkililerimize doğrudan ulaşabilirsiniz.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>İhsan Kaya</h4>
+                    <p class="title">Genel Müdür</p>
+                    <a href="mailto:ihsan.kaya@example.com">✉ ihsan.kaya@example.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Ayça Nur Selim</h4>
+                    <p class="title">Dijital Pazarlama & Ürün</p>
+                    <a href="mailto:aycanurselim314@gmail.com">✉ aycanurselim314@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Zehra Yılmaz</h4>
+                    <p class="title">BT & Veri Yapıları</p>
+                    <a href="mailto:zzehraylmaaz@gmail.com">✉ zzehraylmaaz@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Hamza Emin Demir</h4>
+                    <p class="title">Finans & Risk</p>
+                    <a href="mailto:hamzademir01q@gmail.com">✉ hamzademir01q@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Enes Aydoğan</h4>
+                    <p class="title">Operasyon & Lojistik</p>
+                    <a href="mailto:enesaydogan9677@gmail.com">✉ enesaydogan9677@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Muhammet Bilal Kara</h4>
+                    <p class="title">İK & Tedarik</p>
+                    <a href="mailto:muhammetbilalkara54@gmail.com">✉ muhammetbilalkara54@gmail.com</a>
+                </div>
             </div>
         </section>
 
@@ -845,7 +951,7 @@
         <p>&copy; 2026 MikroCore Teknoloji A.Ş. (G02) — Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- SEPET İŞLEMLERİ (JAVASCRIPT) -->
+    <!-- JAVASCRIPT KODLARI -->
     <script>
         let cart = [];
 
@@ -857,6 +963,11 @@
                 cart.push({ name: name, price: price, qty: 1 });
             }
             updateCartUI();
+            
+            // Eğer başarı ekranındaysa, tekrar formu aç
+            if(document.getElementById('successViewArea').style.display === 'flex') {
+                resetOrder();
+            }
             document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -893,7 +1004,7 @@
                 <div class="cart-item">
                     <div class="item-details">
                         <h5>${item.name}</h5>
-                        <p>${item.price} TL x ${item.qty} = <strong>${itemTotal.toLocaleString('tr-TR')} TL</strong></p>
+                        <p>${item.price.toLocaleString('tr-TR')} TL x ${item.qty} = <strong>${itemTotal.toLocaleString('tr-TR')} TL</strong></p>
                     </div>
                     <div class="item-actions">
                         <button type="button" class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
@@ -915,7 +1026,25 @@
                 alert("Siparişi tamamlamak için lütfen önce sepetinize ürün ekleyin!");
                 return;
             }
-            alert("SİPARİŞ İŞLEMİ BEKLEMEYE ALINDI:\n\nSatın alma bağlantısı ve ödeme işlemleri lig yöneticisinin geçiş onayından sonra etkinleşecektir. Simülasyon kuralları gereği onay beklenmektedir.");
+            
+            // Rastgele Takip Kodu Üret (STK-XXXX)
+            let randomCode = Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('trackingCode').innerText = "Takip Kodu: STK-" + randomCode;
+
+            // Formu Gizle, Başarı Ekranını Göster
+            document.getElementById('formViewArea').style.display = 'none';
+            document.getElementById('successViewArea').style.display = 'flex';
+        }
+
+        function resetOrder() {
+            // Sepeti ve Formu Sıfırla
+            cart = [];
+            updateCartUI();
+            document.getElementById('orderForm').reset();
+            
+            // Başarı Ekranını Gizle, Formu Tekrar Göster
+            document.getElementById('successViewArea').style.display = 'none';
+            document.getElementById('formViewArea').style.display = 'block';
         }
     </script>
 </body>
