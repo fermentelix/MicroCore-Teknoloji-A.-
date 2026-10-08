@@ -27,10 +27,12 @@
             scroll-behavior: smooth;
         }
 
+        /* YARIM EKRAN KAYMASINI ÖNLEYEN KOD BURASI */
         body {
             background-color: var(--background);
             color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden; 
         }
 
         /* --- HEADER & NAV --- */
@@ -170,6 +172,49 @@
             text-transform: uppercase;
         }
 
+        /* --- HOCANIN İSTEDİĞİ YENİ KPI (PERFORMANS) BÖLÜMÜ --- */
+        .kpi-section {
+            background-color: #0b1329;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid #1e293b;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .kpi-grid {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .kpi-card {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .kpi-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .kpi-value.green { color: #34d399; }
+        .kpi-value.purple { color: #c084fc; }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         /* --- HAKKIMIZDA & KARTLAR --- */
         .grid-2 {
             display: grid;
@@ -256,7 +301,7 @@
             margin-bottom: 1rem;
         }
 
-        /* --- ÜRÜN KATALOĞU (GÜNCELLENMİŞ DARK TEMA) --- */
+        /* --- ÜRÜN KATALOĞU --- */
         .product-grid-dark {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -397,7 +442,6 @@
             background-color: #1d4ed8;
         }
 
-        /* Teslimat ve Koşullar Alanı */
         .conditions-section {
             background-color: #0f172a;
             border-radius: 12px;
@@ -455,12 +499,6 @@
             padding: 2.5rem;
             color: #ffffff;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        @media (max-width: 850px) {
-            .checkout-container {
-                grid-template-columns: 1fr;
-            }
         }
 
         .cart-summary {
@@ -572,12 +610,6 @@
             transition: border-color 0.2s;
         }
 
-        .form-group-dark input:focus, 
-        .form-group-dark select:focus, 
-        .form-group-dark textarea:focus {
-            border-color: var(--cyan-accent);
-        }
-
         .btn-checkout {
             width: 100%;
             background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
@@ -589,21 +621,9 @@
             border-radius: 8px;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-            transition: transform 0.2s, opacity 0.2s;
             margin-top: 1rem;
         }
-
-        .btn-checkout:hover {
-            transform: translateY(-2px);
-            opacity: 0.95;
-        }
         
-        .btn-checkout:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Görev Uyarısı Tasarımı (YENİ) */
         .alert-box-warning {
             background-color: rgba(245, 158, 11, 0.1);
             border: 1px solid rgba(245, 158, 11, 0.3);
@@ -617,7 +637,6 @@
             line-height: 1.5;
         }
 
-        /* --- BAŞARILI SİPARİŞ EKRANI --- */
         .success-screen {
             background-color: #0b1524;
             border: 1px solid #1e2d4d;
@@ -633,60 +652,23 @@
         }
         
         .success-icon {
-            width: 70px;
-            height: 70px;
-            background-color: #064e3b;
-            color: #34d399;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2.5rem;
-            margin: 0 auto;
+            width: 70px; height: 70px; background-color: #064e3b; color: #34d399;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 2.5rem; margin: 0 auto;
         }
         
-        .success-title {
-            color: #34d399;
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-        
-        .success-desc {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            max-width: 500px;
-            line-height: 1.6;
-            margin: 0 auto;
-        }
+        .success-title { color: #34d399; font-size: 1.6rem; font-weight: 700; }
+        .success-desc { color: #94a3b8; font-size: 0.95rem; max-width: 500px; line-height: 1.6; margin: 0 auto; }
         
         .tracking-box {
-            border: 1px dashed #1e40af;
-            background-color: #0f172a;
-            color: #38bdf8;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 1rem auto;
-            width: fit-content;
-            letter-spacing: 1px;
+            border: 1px dashed #1e40af; background-color: #0f172a; color: #38bdf8;
+            padding: 1rem 2rem; border-radius: 8px; font-family: monospace; font-size: 1.2rem;
+            font-weight: bold; margin: 1rem auto;
         }
         
         .btn-new-order {
-            background-color: #1e293b;
-            color: #f8fafc;
-            border: 1px solid #334155;
-            padding: 0.8rem 1.8rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.2s;
-            margin-top: 1rem;
-        }
-        
-        .btn-new-order:hover {
-            background-color: #334155;
+            background-color: #1e293b; color: #f8fafc; border: 1px solid #334155;
+            padding: 0.8rem 1.8rem; border-radius: 6px; cursor: pointer; font-weight: 600;
         }
 
         /* --- İLETİŞİM KARTLARI --- */
@@ -702,35 +684,20 @@
             padding: 1.5rem;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        .contact-card h4 {
-            color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
-        }
-        .contact-card p.title {
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .contact-card a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .contact-card a:hover {
-            color: var(--accent);
-        }
+        .contact-card h4 { color: var(--primary); font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .contact-card p.title { color: var(--accent); font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }
+        .contact-card a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
 
-        footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            background-color: #f8fafc;
+        footer { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.85rem; background-color: #f8fafc; }
+
+        /* MOBİL İÇİN YARIM EKRAN KAYMASINI DÜZELTEN KODLAR */
+        @media (max-width: 768px) {
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -761,6 +728,32 @@
         <h1>Geleceğin Teknolojisini Bugünden İnşa Ediyoruz</h1>
         <p>MikroCore Teknoloji A.Ş. (G02), yüksek performanslı mikroişlemci mimarisinden yeni nesil akıllı ev çözümlerine kadar pazar standartlarını belirleyen entegre donanım altyapıları sunar.</p>
     </div>
+
+    <!-- HOCANIN İSTEDİĞİ YENİ KPI PANOSU -->
+    <section class="kpi-section">
+        <div class="section-header">
+            <h2 style="color: #ffffff;">Canlı KPI Metriklerimiz</h2>
+            <p style="color: #94a3b8;">Şirketimizin Temel Performans Göstergeleri (Key Performance Indicators)</p>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-value green">%100</div>
+                <div class="kpi-label">Günlük Üretim Kapasitesi</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">3.670</div>
+                <div class="kpi-label">Hazır İşlemci Stoğu</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value purple">%98</div>
+                <div class="kpi-label">Saha Çalışan Memnuniyeti</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">0</div>
+                <div class="kpi-label">Lojistik Hasar Oranı</div>
+            </div>
+        </div>
+    </section>
 
     <div class="container">
 
@@ -978,7 +971,6 @@
                 <!-- FORM ALANI -->
                 <div id="formViewArea">
                     
-                    <!-- GÖREV 5 İÇİN ZORUNLU UYARI KUTUSU -->
                     <div class="alert-box-warning">
                         <span style="font-size: 1.5rem;">⚠️</span>
                         <div>
@@ -987,7 +979,6 @@
                     </div>
 
                     <form id="orderForm" onsubmit="processCheckout(event)">
-                        <!-- Gizli alanlar -->
                         <input type="hidden" name="_subject" value="MİKROCORE YENİ SİPARİŞ TALEBİ!">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="Sepet_Detayi" id="hiddenCartData" value="">
@@ -1047,7 +1038,9 @@
             <div class="section-header">
                 <h2>İletişim Bilgilerimiz</h2>
                 <p>Kurumsal görüşmeler ve B2B iş ortaklıkları için departman yetkililerimize doğrudan ulaşabilirsiniz.</p>
-                <input type="text" value="ALYA-26-02" readonly style="font-family: monospace; font-size: 1.1rem; font-weight: bold; background: #1e293b; color: #34d399; border: 2px dashed #34d399; padding: 0.8rem; max-width: 250px; text-align: center; border-radius: 6px; margin: 1.5rem auto 0 auto; display: block;">
+                
+                <!-- BT ONAY GÖREV KODU EKLENDİ -->
+                <input type="text" value="ALYA-26-02" readonly style="font-family: monospace; font-size: 1.1rem; font-weight: bold; background: #1e293b; color: #34d399; border: 2px dashed #34d399; padding: 0.8rem; max-width: 250px; text-align: center; border-radius: 6px; margin: 1.5rem auto 0 auto; display: block; outline: none; cursor: default;" title="BT Birimi Doğrulama Kodu">
             </div>
             
             <div class="contact-grid">
