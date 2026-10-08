@@ -30,9 +30,10 @@
         body {
             background-color: var(--background);
             color: var(--text-main);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
+        /* --- HEADER & NAV --- */
         header {
             background-color: var(--surface);
             border-bottom: 1px solid var(--border);
@@ -71,6 +72,7 @@
         nav {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -99,10 +101,19 @@
             border: 1px solid #bfdbfe;
         }
 
+        /* --- GENEL YAPI --- */
         .container {
             max-width: 1240px;
             margin: 0 auto;
             padding: 2.5rem 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        section:last-child {
+            border-bottom: none;
         }
 
         .section-header {
@@ -119,14 +130,173 @@
         .section-header p {
             color: var(--text-muted);
             margin-top: 0.3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* --- ÜRÜN KATALOĞU (SEPETE EKLE BUTONLU) --- */
+        /* --- HERO (ANA SAYFA) --- */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem 5rem 1rem;
+            background: linear-gradient(180deg, #ffffff 0%, var(--background) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .badge-main {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--accent);
+            padding: 0.35rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* --- HAKKIMIZDA & KARTLAR --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .info-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* --- DEPARTMAN / EKİP KARTLARI --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .member-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .dept-badge {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            border: 1px solid #dbeafe;
+        }
+
+        .specialty-badge {
+            background-color: #f1f5f9;
+            color: #475569;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .member-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .member-desc {
+            font-size: 0.82rem;
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .skills-heading, .resp-heading {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: #0f172a;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.5px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-tag {
+            background-color: #f0fdf4;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+        }
+
+        .resp-box {
+            background-color: #f8fafc;
+            border-left: 3px solid var(--accent);
+            padding: 0.6rem 0.8rem;
+            font-size: 0.78rem;
+            color: #334155;
+            line-height: 1.45;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* --- ÜRÜN KATALOĞU --- */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
         }
 
         .product-card {
@@ -213,7 +383,7 @@
             color: #ffffff;
         }
 
-        /* --- SİPARİŞ / CHECKOUT FORMU (GELİŞMİŞ E-TİCARET YAPISI) --- */
+        /* --- SİPARİŞ / CHECKOUT FORMU --- */
         .checkout-container {
             display: grid;
             grid-template-columns: 1fr 1.5fr;
@@ -223,7 +393,6 @@
             padding: 2.5rem;
             color: #ffffff;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            margin-top: 2rem;
         }
 
         @media (max-width: 850px) {
@@ -232,7 +401,6 @@
             }
         }
 
-        /* Sol Taraf: Sepet Özeti */
         .cart-summary {
             background-color: var(--dark-card-inner);
             border: 1px solid #1e2d4d;
@@ -309,7 +477,6 @@
             font-style: italic;
         }
 
-        /* Sağ Taraf: Müşteri Formu */
         .form-grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -386,19 +553,22 @@
             padding: 3rem 1rem;
             color: var(--text-muted);
             font-size: 0.85rem;
-            margin-top: 3rem;
-            border-top: 1px solid var(--border);
+            background-color: #f8fafc;
         }
     </style>
 </head>
 <body>
 
+    <!-- ÜST MENÜ -->
     <header>
         <div class="nav-container">
             <div class="brand">
                 MikroCore Teknoloji <span class="tag">G02</span>
             </div>
             <nav>
+                <a href="#anasayfa">Ana Sayfa</a>
+                <a href="#hakkimizda">Hakkımızda</a>
+                <a href="#ekip">Yönetim</a>
                 <a href="#katalog">Ürünler</a>
                 <a href="#checkout" class="cart-nav-btn">
                     🛒 Sepet <span id="navCartCount" style="background:#2563eb; color:white; padding:0.1rem 0.5rem; border-radius:10px; font-size:0.8rem;">0</span>
@@ -407,9 +577,161 @@
         </div>
     </header>
 
+    <!-- 1. HERO (ANA SAYFA) -->
+    <div class="hero" id="anasayfa">
+        <span class="badge-main">B2B & B2C Teknolojik Donanım Sağlayıcısı</span>
+        <h1>Geleceğin Teknolojisini Bugünden İnşa Ediyoruz</h1>
+        <p>MikroCore Teknoloji A.Ş. (G02), yüksek performanslı mikroişlemci mimarisinden yeni nesil akıllı ev çözümlerine kadar pazar standartlarını belirleyen entegre donanım altyapıları sunar.</p>
+    </div>
+
     <div class="container">
 
-        <!-- ÜRÜN KATALOĞU (SENSÖR SİLİNDİ, SEPETE EKLE GELDİ) -->
+        <!-- 2. HAKKIMIZDA -->
+        <section id="hakkimizda">
+            <div class="section-header">
+                <h2>Kurumsal Kimliğimiz</h2>
+                <p>Veri odaklı yönetim, çevik operasyon ve sürdürülebilir büyüme vizyonumuz.</p>
+            </div>
+            <div class="grid-2">
+                <div class="info-card">
+                    <h3>Biz Kimiz?</h3>
+                    <p>MikroCore Teknoloji A.Ş., kurumsal donanım pazarında uzmanlaşmış yapısıyla sektörün lider teknoloji ekosistemlerinden biridir. Çevik yönetim modellerini (Agile) benimseyen karar destek mekanizmalarımız ve yüksek üretim kapasitemizle, iş ortaklarımızın operasyonel gereksinimlerine eksiksiz yanıt veriyoruz.</p>
+                    <br>
+                    <p>Kurumsal yönetişim ve sosyal sorumluluk ilkelerimiz çerçevesinde, afet müdahale fonlarına ve sürdürülebilirlik projelerine aktif katkı sağlayarak sektörde güven ve değer inşa ediyoruz.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Misyon ve Vizyonumuz</h3>
+                    <p><strong>Misyon:</strong> Bireysel ve kurumsal kullanıcıların dijital dönüşüm süreçlerine güç veren güvenilir, yüksek performanslı ve erişilebilir teknolojik donanımları kesintisiz tedarik zinciri güvencesiyle üretmek.</p>
+                    <br>
+                    <p><strong>Vizyon:</strong> Geleceğin olası pazar ve kapasite dalgalanmalarını proaktif risk yönetimi modelleriyle karşılayarak, global donanım ve mikroişlemci ekosisteminde standart belirleyici lider konumda kalmak.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. YÖNETİM KADROSU -->
+        <section id="ekip">
+            <div class="section-header">
+                <h2>Departmanlar ve Yönetim Kadromuz</h2>
+                <p>MikroCore Teknoloji A.Ş.'nin çevik organizasyon yapısı ve karar verici ekibi</p>
+            </div>
+            <div class="team-grid">
+                <!-- İhsan Kaya -->
+                <div class="member-card">
+                    <div>
+                        <div class="badge-row">
+                            <span class="dept-badge">GENEL MÜDÜRLÜK</span>
+                            <span class="specialty-badge">İşletme & YBS</span>
+                        </div>
+                        <div class="member-name">İhsan Kaya</div>
+                        <div class="member-title">Genel Müdür (CEO) | Teknoloji ve İş Geliştirme</div>
+                        <div class="member-desc">Şirketin genel stratejisinin ve büyüme vizyonunun belirlenmesini yönetir. Teknoloji yatırımları, operasyonel senkronizasyon ve kurumsal performanstan sorumludur.</div>
+                        <div class="skills-heading">YETKİNLİKLER:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Stratejik Yönetim</span>
+                            <span class="skill-tag">İş Geliştirme</span>
+                            <span class="skill-tag">Liderlik</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ayça Nur Selim -->
+                <div class="member-card">
+                    <div>
+                        <div class="badge-row">
+                            <span class="dept-badge">PAZARLAMA & ÜRÜN</span>
+                            <span class="specialty-badge">YBS</span>
+                        </div>
+                        <div class="member-name">Ayça Nur Selim</div>
+                        <div class="member-title">Dijital Pazarlama ve Ürün Yöneticisi</div>
+                        <div class="member-desc">B2B/B2C pazarlama stratejilerinde uzmandır. Marka konumlandırma, büyüme stratejileri ve e-ticaret altyapılarının yönetiminden sorumludur.</div>
+                        <div class="skills-heading">YETKİNLİKLER:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Growth Hacking</span>
+                            <span class="skill-tag">B2B/B2C Satış</span>
+                            <span class="skill-tag">Go-to-Market</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enes Aydoğan -->
+                <div class="member-card">
+                    <div>
+                        <div class="badge-row">
+                            <span class="dept-badge">OPERASYON & LOJİSTİK</span>
+                            <span class="specialty-badge">Süreç Modelleme</span>
+                        </div>
+                        <div class="member-name">Enes Aydoğan</div>
+                        <div class="member-title">Operasyon ve Lojistik Direktörü</div>
+                        <div class="member-desc">Üretim planlaması ve operasyonel modelleme alanındaki yetkinliklerini birleştiren analitik lider. Montaj bandı verimliliği ve B2B lojistik akışından sorumludur.</div>
+                        <div class="skills-heading">YETKİNLİKLER:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Tedarik Zinciri</span>
+                            <span class="skill-tag">Kapasite Planlama</span>
+                            <span class="skill-tag">B2B Takas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hamza Emin Demir -->
+                <div class="member-card">
+                    <div>
+                        <div class="badge-row">
+                            <span class="dept-badge">FİNANS & RİSK</span>
+                            <span class="specialty-badge">Mali Denetim</span>
+                        </div>
+                        <div class="member-name">Hamza Emin Demir</div>
+                        <div class="member-title">Finans Müdürü | Risk ve Etik Sorumlusu</div>
+                        <div class="member-desc">Finansal süreçlerin şeffaf yürütülmesini sağlayan; nakit akışı yönetimi ile operasyonların kurumsal etik ilkelerine uygunluğunu denetleyen yönetici.</div>
+                        <div class="skills-heading">YETKİNLİKLER:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">Nakit Akışı</span>
+                            <span class="skill-tag">Risk Analizi</span>
+                            <span class="skill-tag">Kurumsal Etik</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zehra Yılmaz -->
+                <div class="member-card">
+                    <div>
+                        <div class="badge-row">
+                            <span class="dept-badge">BİLİŞİM & VERİ</span>
+                            <span class="specialty-badge">Bilgisayar Müh.</span>
+                        </div>
+                        <div class="member-name">Zehra Yılmaz</div>
+                        <div class="member-title">BT ve Veri Yapıları Müdürü</div>
+                        <div class="member-desc">Kurumsal teknoloji altyapısı, veri mimarisi ve bilgi güvenliği alanlarında deneyimli BT yöneticisi. İş hedeflerini teknoloji çözümleriyle buluşturur.</div>
+                        <div class="skills-heading">YETKİNLİKLER:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">BT Altyapı Yönetimi</span>
+                            <span class="skill-tag">Veri Mimarisi</span>
+                            <span class="skill-tag">Sistem Güvenliği</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Muhammet Bilal Kara -->
+                <div class="member-card">
+                    <div>
+                        <div class="badge-row">
+                            <span class="dept-badge">İK & TEDARİK</span>
+                            <span class="specialty-badge">YBS</span>
+                        </div>
+                        <div class="member-name">Muhammet Bilal Kara</div>
+                        <div class="member-title">İnsan Kaynakları ve Tedarik Müdürü</div>
+                        <div class="member-desc">İnsan kaynağı ihtiyaçlarının değerlendirilmesi, çalışan bağlılığı ile satın alma süreçlerinin takibini başarıyla koordine eden organizasyon yöneticisi.</div>
+                        <div class="skills-heading">YETKİNLİKLER:</div>
+                        <div class="skills-list">
+                            <span class="skill-tag">İnsan Kaynakları</span>
+                            <span class="skill-tag">Satın Alma</span>
+                            <span class="skill-tag">Ekip Koordinasyonu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ÜRÜN KATALOĞU (SEPETE EKLE BUTONLU) -->
         <section id="katalog">
             <div class="section-header">
                 <h2>MikroCore Satış Kataloğu</h2>
@@ -417,7 +739,6 @@
             </div>
 
             <div class="product-grid">
-                
                 <!-- Ürün 1 -->
                 <div class="product-card">
                     <span class="card-tag tag-b2b">KURUMSAL B2B (UZMANLIK)</span>
@@ -449,23 +770,20 @@
                         + Sepete Ekle
                     </button>
                 </div>
-
             </div>
         </section>
 
-        <!-- SEPET VE CHECKOUT FORMU -->
+        <!-- 5. SEPET VE CHECKOUT FORMU -->
         <section id="checkout">
             <div class="section-header" style="margin-bottom: 1rem;">
                 <h2>Sipariş ve Ödeme Ekranı</h2>
             </div>
 
             <div class="checkout-container">
-                
                 <!-- Sepet Özeti -->
                 <div class="cart-summary">
                     <h4>🛒 Sepetiniz</h4>
                     <div class="cart-items" id="cartItemsContainer">
-                        <!-- Sepet boşken bu görünür -->
                         <div class="empty-cart-msg">Sepetinizde henüz ürün bulunmamaktadır.<br>Katalogdan ürün ekleyebilirsiniz.</div>
                     </div>
                     
@@ -518,7 +836,6 @@
                         </button>
                     </form>
                 </div>
-
             </div>
         </section>
 
@@ -533,29 +850,21 @@
         let cart = [];
 
         function addToCart(name, price) {
-            // Sepette var mı kontrol et
             let existingItem = cart.find(item => item.name === name);
-            
             if (existingItem) {
                 existingItem.qty += 1;
             } else {
                 cart.push({ name: name, price: price, qty: 1 });
             }
-            
             updateCartUI();
-            
-            // Kullanıcıyı sepete kaydır
             document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
         }
 
         function updateQuantity(index, delta) {
             cart[index].qty += delta;
-            
-            // Eğer adet 0 veya altına düşerse ürünü sepetten çıkar
             if (cart[index].qty <= 0) {
                 cart.splice(index, 1);
             }
-            
             updateCartUI();
         }
 
@@ -564,7 +873,6 @@
             const totalEl = document.getElementById('cartTotalVal');
             const navCount = document.getElementById('navCartCount');
             
-            // Sepet Boş mu?
             if (cart.length === 0) {
                 container.innerHTML = '<div class="empty-cart-msg">Sepetinizde henüz ürün bulunmamaktadır.<br>Katalogdan ürün ekleyebilirsiniz.</div>';
                 totalEl.innerText = "0 TL";
@@ -602,14 +910,11 @@
         }
 
         function processCheckout(e) {
-            e.preventDefault(); // Sayfanın yenilenmesini engeller
-            
+            e.preventDefault(); 
             if (cart.length === 0) {
                 alert("Siparişi tamamlamak için lütfen önce sepetinize ürün ekleyin!");
                 return;
             }
-
-            // Hocanın istediği lig yöneticisi uyarısını fırlatıyoruz
             alert("SİPARİŞ İŞLEMİ BEKLEMEYE ALINDI:\n\nSatın alma bağlantısı ve ödeme işlemleri lig yöneticisinin geçiş onayından sonra etkinleşecektir. Simülasyon kuralları gereği onay beklenmektedir.");
         }
     </script>
