@@ -3,42 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MikroCore Teknoloji A.Ş. (G02) | B2B & B2C E-Ticaret Portalı</title>
+    <title>MikroCore Teknoloji A.Ş. (G02) | Kurumsal Donanım Portalı</title>
     <style>
         :root {
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --surface: #ffffff;
-            --background: #f8fafc;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --dark-card: #0b1329;
-            --dark-card-inner: #111c38;
-            --cyan-accent: #00d2ff;
+            /* YENİ ÖZGÜN RENK PALETİ (Obsidyen ve Turkuaz) */
+            --bg-main: #09090b;
+            --bg-surface: #121214;
+            --bg-card: #18181b;
+            --border-color: #27272a;
+            
+            --accent-primary: #0d9488; /* Elektrik Turkuaz */
+            --accent-hover: #0f766e;
+            --accent-glow: rgba(13, 148, 136, 0.2);
+            
+            --text-title: #ffffff;
+            --text-body: #a1a1aa;
+            
+            --warning-bg: rgba(245, 158, 11, 0.1);
+            --warning-border: rgba(245, 158, 11, 0.3);
+            --warning-text: #fbbf24;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             scroll-behavior: smooth;
         }
 
-        /* YARIM EKRAN KAYMASINI ÖNLEYEN KOD BURASI */
         body {
-            background-color: var(--background);
-            color: var(--text-main);
+            background-color: var(--bg-main);
+            color: var(--text-body);
             line-height: 1.6;
             overflow-x: hidden; 
         }
 
         /* --- HEADER & NAV --- */
         header {
-            background-color: var(--surface);
-            border-bottom: 1px solid var(--border);
+            background-color: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -47,28 +52,30 @@
         .nav-container {
             max-width: 1240px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .brand {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--text-title);
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            letter-spacing: -0.5px;
         }
 
         .brand span.tag {
-            background-color: #2563eb;
+            background-color: var(--accent-primary);
             color: #ffffff;
             font-size: 0.75rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
         nav {
@@ -79,28 +86,33 @@
 
         nav a {
             text-decoration: none;
-            color: var(--text-muted);
+            color: var(--text-body);
             font-weight: 600;
             font-size: 0.95rem;
-            margin-left: 1.5rem;
+            margin-left: 1.8rem;
             transition: color 0.2s;
         }
 
         nav a:hover {
-            color: var(--accent);
+            color: var(--accent-primary);
         }
         
         .cart-nav-btn {
-            background: #eff6ff;
-            color: #1d4ed8;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            margin-left: 1.5rem;
+            background: transparent;
+            color: var(--accent-primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            margin-left: 1.8rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
-            border: 1px solid #bfdbfe;
+            gap: 0.5rem;
+            border: 1px solid var(--accent-primary);
+            transition: all 0.2s;
+        }
+
+        .cart-nav-btn:hover {
+            background: var(--accent-glow);
         }
 
         /* --- GENEL YAPI --- */
@@ -111,8 +123,8 @@
         }
 
         section {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
         section:last-child {
             border-bottom: none;
@@ -120,64 +132,76 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3.5rem;
         }
 
         .section-header h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--text-title);
+            letter-spacing: -0.5px;
         }
 
         .section-header p {
-            color: var(--text-muted);
-            margin-top: 0.3rem;
-            max-width: 700px;
+            margin-top: 0.5rem;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 1.05rem;
         }
 
         /* --- HERO (ANA SAYFA) --- */
         .hero {
             text-align: center;
-            padding: 4rem 1rem 5rem 1rem;
-            background: linear-gradient(180deg, #ffffff 0%, var(--background) 100%);
-            border-bottom: 1px solid var(--border);
+            padding: 6rem 1rem;
+            background: radial-gradient(circle at 50% 0%, #1f2937 0%, var(--bg-main) 70%);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+            opacity: 0.5;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            line-height: 1.2;
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--text-title);
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
+            max-width: 750px;
+            margin: 0 auto 2.5rem auto;
+            color: #d4d4d8;
         }
 
         .badge-main {
             display: inline-block;
-            background-color: #dbeafe;
-            color: var(--accent);
-            padding: 0.35rem 0.8rem;
-            border-radius: 9999px;
+            background-color: var(--accent-glow);
+            color: var(--accent-primary);
+            border: 1px solid rgba(13, 148, 136, 0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
             font-size: 0.85rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
         }
 
-        /* --- HOCANIN İSTEDİĞİ YENİ KPI (PERFORMANS) BÖLÜMÜ --- */
+        /* --- YENİ KPI PANOSU --- */
         .kpi-section {
-            background-color: #0b1329;
-            padding: 3rem 1.5rem;
-            border-top: 1px solid #1e293b;
-            border-bottom: 1px solid #1e293b;
+            background-color: var(--bg-surface);
+            padding: 4rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .kpi-grid {
@@ -189,148 +213,136 @@
         }
 
         .kpi-card {
-            background-color: #0f172a;
-            border: 1px solid #1e293b;
-            border-radius: 12px;
-            padding: 1.5rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px var(--accent-glow);
         }
 
         .kpi-value {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #38bdf8;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--text-title);
+            margin-bottom: 0.8rem;
         }
         
-        .kpi-value.green { color: #34d399; }
-        .kpi-value.purple { color: #c084fc; }
+        .kpi-value.green { color: var(--accent-primary); }
+        .kpi-value.purple { color: #a855f7; }
 
         .kpi-label {
-            font-size: 0.85rem;
-            color: #94a3b8;
+            font-size: 0.8rem;
+            color: var(--text-body);
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
-        /* --- HAKKIMIZDA & KARTLAR --- */
-        .grid-2 {
+        .live-badge {
+            font-size: 0.75rem;
+            background: rgba(13, 148, 136, 0.15);
+            color: var(--accent-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(13, 148, 136, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            vertical-align: middle;
+            margin-left: 10px;
+            letter-spacing: 1px;
+        }
+
+        .blink-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* --- KARTLAR (Hakkımızda & Ekip & Ürün) --- */
+        .grid-2, .team-grid, .product-grid-dark, .conditions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .info-card {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        
-        .info-card h3 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        /* --- DEPARTMAN / EKİP KARTLARI --- */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 1.5rem;
         }
+        
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+        .team-grid { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+        .product-grid-dark { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 3rem; }
+        .conditions-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
-        .member-card {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .custom-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
         }
 
+        .custom-card:hover {
+            border-color: rgba(13, 148, 136, 0.4);
+            background-color: var(--bg-card);
+        }
+        
+        .custom-card h3, .custom-card .member-name {
+            font-size: 1.4rem;
+            color: var(--text-title);
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+        }
+
+        /* Ekip Rozetleri */
         .badge-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
         }
 
         .dept-badge {
-            background-color: #eff6ff;
-            color: #1d4ed8;
-            font-size: 0.72rem;
+            color: var(--text-title);
+            font-size: 0.7rem;
             font-weight: 800;
-            padding: 0.3rem 0.6rem;
-            border-radius: 6px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            border: 1px solid #dbeafe;
         }
 
         .specialty-badge {
-            background-color: #f1f5f9;
-            color: #475569;
+            background-color: var(--bg-main);
+            color: var(--accent-primary);
             font-size: 0.7rem;
             font-weight: 700;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-        }
-
-        .member-name {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
         }
 
         .member-title {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            font-size: 0.9rem;
+            color: var(--accent-primary);
             font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .member-desc {
-            font-size: 0.82rem;
-            color: #475569;
-            line-height: 1.5;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         /* --- ÜRÜN KATALOĞU --- */
-        .product-grid-dark {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .product-card-dark {
-            background-color: #0f172a;
-            border: 1px solid #1e293b;
-            border-radius: 12px;
-            padding: 2rem;
-            color: #f8fafc;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .product-card-dark h3 {
-            font-size: 1.6rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
         .product-desc-dark {
-            font-size: 0.95rem;
-            color: #94a3b8;
             margin-bottom: 1.5rem;
-            line-height: 1.6;
             flex-grow: 1;
         }
 
@@ -342,18 +354,17 @@
         }
 
         .tags-dark span {
-            border: 1px solid #334155;
-            background-color: transparent;
-            color: #94a3b8;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            border: 1px solid var(--border-color);
             font-size: 0.75rem;
-            padding: 0.35rem 0.7rem;
-            border-radius: 4px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
         }
 
         .price-box-dark {
-            background-color: #0b1120;
-            border: 1px solid #1e293b;
-            border-radius: 8px;
+            background-color: var(--bg-main);
+            border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
@@ -362,394 +373,172 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background-color: rgba(16, 185, 129, 0.1);
-            color: #34d399;
+            color: var(--accent-primary);
             font-size: 0.85rem;
             font-weight: 700;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(16, 185, 129, 0.2);
         }
         
-        .stock-badge-dark.warning {
-            background-color: rgba(245, 158, 11, 0.1);
-            color: #fbbf24;
-            border-color: rgba(245, 158, 11, 0.2);
-        }
+        .stock-badge-dark.warning { color: var(--warning-text); }
 
-        .dot-green {
-            width: 8px; height: 8px; background-color: #34d399; border-radius: 50%;
-        }
-        
-        .dot-orange {
-            width: 8px; height: 8px; background-color: #fbbf24; border-radius: 50%;
-        }
+        .dot-green { width: 8px; height: 8px; background-color: var(--accent-primary); border-radius: 50%; box-shadow: 0 0 10px var(--accent-primary); }
+        .dot-orange { width: 8px; height: 8px; background-color: var(--warning-text); border-radius: 50%; box-shadow: 0 0 10px var(--warning-text); }
 
         .price-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            border-bottom: 1px dashed #1e293b;
-            padding-bottom: 0.5rem;
-        }
-
-        .price-row:last-of-type {
-            border-bottom: none;
-            margin-bottom: 1rem;
-        }
-
-        .price-row .label {
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-
-        .price-row .val-tl {
-            color: #38bdf8;
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-
-        .price-row .val-eu {
-            color: #38bdf8;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .price-box-dark .note {
-            font-size: 0.85rem;
-            color: #64748b;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #1e293b;
+            margin-bottom: 0.8rem;
         }
         
-        .btn-add-cart-dark {
-            width: 100%;
-            background-color: #2563eb;
-            color: #ffffff;
+        .price-row .label { font-size: 0.95rem; }
+        .price-row .val-tl { color: var(--text-title); font-size: 1.6rem; font-weight: 900; }
+        .price-row .val-eu { color: var(--text-title); font-size: 1.2rem; font-weight: 700; }
+        .price-box-dark .note { font-size: 0.8rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border-color); }
+        
+        .btn-primary {
+            width: 100%; 
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
+            color: #ffffff; 
             border: none;
-            padding: 0.9rem;
-            font-size: 1.05rem;
-            font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
+            padding: 1rem; 
+            font-size: 1rem; 
+            font-weight: 700; 
+            border-radius: 10px;
+            cursor: pointer; 
+            transition: opacity 0.2s, transform 0.2s;
         }
-        
-        .btn-add-cart-dark:hover {
-            background-color: #1d4ed8;
-        }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
 
+        /* --- KOŞULLAR --- */
         .conditions-section {
-            background-color: #0f172a;
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-top: 2rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background-color: var(--bg-surface);
+            border-radius: 16px; 
+            padding: 3rem;
+            margin-top: 2rem; 
+            border: 1px solid var(--border-color);
         }
         
         .conditions-title {
-            text-align: center;
-            color: #ffffff;
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+            text-align: center; color: var(--text-title); font-size: 1.4rem; margin-bottom: 2.5rem;
         }
 
-        .conditions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .condition-card {
-            background-color: #1e293b;
-            border-radius: 8px;
-            padding: 1.5rem;
-            border: 1px solid #334155;
-        }
-
-        .condition-card h4 {
-            color: #f8fafc;
-            font-size: 1.05rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .condition-card p {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* --- SİPARİŞ / CHECKOUT FORMU --- */
+        .condition-card h4 { color: var(--text-title); font-size: 1.05rem; margin-bottom: 0.8rem; }
+        
+        /* --- CHECKOUT FORMU --- */
         .checkout-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 2rem;
-            background: linear-gradient(180deg, #070d1e 0%, #0b1329 100%);
-            border-radius: 16px;
-            padding: 2.5rem;
-            color: #ffffff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 2.5rem;
         }
 
-        .cart-summary {
-            background-color: var(--dark-card-inner);
-            border: 1px solid #1e2d4d;
-            border-radius: 12px;
-            padding: 1.5rem;
-            height: fit-content;
-        }
-
-        .cart-summary h4 {
-            font-size: 1.2rem;
-            border-bottom: 1px solid #1e2d4d;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-            color: var(--cyan-accent);
-        }
-
-        .cart-items {
-            min-height: 100px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
+        .cart-summary { background-color: var(--bg-main); border-radius: 12px; padding: 1.5rem; height: fit-content; }
+        .cart-summary h4 { font-size: 1.2rem; color: var(--text-title); border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem; }
+        .cart-items { min-height: 100px; max-height: 300px; overflow-y: auto; }
         .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #0f172a;
-            padding: 0.8rem;
-            border-radius: 6px;
-            margin-bottom: 0.8rem;
-            border: 1px solid #1e293b;
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 0.8rem 0; border-bottom: 1px dashed var(--border-color);
         }
+        .item-details h5 { font-size: 0.9rem; color: var(--text-title); margin-bottom: 0.3rem; }
+        .item-actions { display: flex; align-items: center; gap: 0.8rem; }
+        .qty-btn { background: var(--bg-card); color: var(--text-title); border: 1px solid var(--border-color); width: 28px; height: 28px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .cart-total { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 800; color: var(--text-title); }
+        .empty-cart-msg { text-align: center; font-size: 0.9rem; padding: 2rem 0; font-style: italic; }
 
-        .item-details h5 {
-            font-size: 0.9rem;
-            color: #e2e8f0;
-            margin-bottom: 0.2rem;
+        .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+        .form-group-dark { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; }
+        .form-group-dark label { font-size: 0.85rem; font-weight: 600; color: var(--text-title); }
+        .form-group-dark input, .form-group-dark select, .form-group-dark textarea {
+            background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 1rem; color: var(--text-title); font-size: 0.9rem; outline: none; transition: border-color 0.2s;
         }
-        .item-details p { font-size: 0.8rem; color: #94a3b8; }
-        
-        .item-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .qty-btn {
-            background: #334155;
-            color: white;
-            border: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .cart-total {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #1e2d4d;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.2rem;
-            font-weight: 800;
-        }
-        
-        .empty-cart-msg {
-            text-align: center;
-            color: #64748b;
-            font-size: 0.9rem;
-            padding: 2rem 0;
-            font-style: italic;
-        }
-
-        .form-grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group-dark {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group-dark label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #cbd5e1;
-        }
-
-        .form-group-dark input, 
-        .form-group-dark select, 
-        .form-group-dark textarea {
-            background-color: var(--dark-card-inner);
-            border: 1px solid #1e2d4d;
-            border-radius: 6px;
-            padding: 0.85rem;
-            color: #ffffff;
-            font-size: 0.9rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .btn-checkout {
-            width: 100%;
-            background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
-            color: #ffffff;
-            font-weight: 800;
-            font-size: 1.1rem;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-            margin-top: 1rem;
+        .form-group-dark input:focus, .form-group-dark select:focus, .form-group-dark textarea:focus {
+            border-color: var(--accent-primary);
         }
         
         .alert-box-warning {
-            background-color: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            color: #fbbf24;
-            padding: 1.2rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            display: flex;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
+            background-color: var(--warning-bg); border: 1px solid var(--warning-border);
+            color: var(--warning-text); padding: 1.2rem; border-radius: 12px; font-size: 0.9rem;
+            display: flex; gap: 1rem; margin-bottom: 2rem; line-height: 1.5;
         }
 
         .success-screen {
-            background-color: #0b1524;
-            border: 1px solid #1e2d4d;
-            border-radius: 12px;
-            padding: 4rem 2rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            height: 100%;
-            justify-content: center;
+            background-color: var(--bg-main); border-radius: 12px; padding: 4rem 2rem;
+            text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; height: 100%; justify-content: center;
         }
-        
-        .success-icon {
-            width: 70px; height: 70px; background-color: #064e3b; color: #34d399;
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 2.5rem; margin: 0 auto;
-        }
-        
-        .success-title { color: #34d399; font-size: 1.6rem; font-weight: 700; }
-        .success-desc { color: #94a3b8; font-size: 0.95rem; max-width: 500px; line-height: 1.6; margin: 0 auto; }
-        
-        .tracking-box {
-            border: 1px dashed #1e40af; background-color: #0f172a; color: #38bdf8;
-            padding: 1rem 2rem; border-radius: 8px; font-family: monospace; font-size: 1.2rem;
-            font-weight: bold; margin: 1rem auto;
-        }
-        
-        .btn-new-order {
-            background-color: #1e293b; color: #f8fafc; border: 1px solid #334155;
-            padding: 0.8rem 1.8rem; border-radius: 6px; cursor: pointer; font-weight: 600;
-        }
+        .success-icon { width: 70px; height: 70px; background-color: rgba(13, 148, 136, 0.1); color: var(--accent-primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2.5rem; margin: 0 auto; border: 2px solid var(--accent-primary); }
+        .success-title { color: var(--text-title); font-size: 1.6rem; font-weight: 800; }
+        .tracking-box { border: 1px dashed var(--accent-primary); background-color: var(--accent-glow); color: var(--accent-primary); padding: 1rem 2rem; border-radius: 8px; font-family: monospace; font-size: 1.2rem; font-weight: bold; margin: 1rem auto; letter-spacing: 1px; }
 
         /* --- İLETİŞİM KARTLARI --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        .contact-card {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .contact-card h4 { color: var(--primary); font-size: 1.1rem; margin-bottom: 0.2rem; }
-        .contact-card p.title { color: var(--accent); font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }
-        .contact-card a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .contact-card { background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; text-align: center; }
+        .contact-card h4 { color: var(--text-title); font-size: 1.1rem; margin-bottom: 0.3rem; }
+        .contact-card p.title { color: var(--accent-primary); font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }
+        .contact-card a { color: var(--text-body); text-decoration: none; font-size: 0.9rem; }
+        .contact-card a:hover { color: var(--text-title); }
 
-        footer { text-align: center; padding: 3rem 1rem; color: var(--text-muted); font-size: 0.85rem; background-color: #f8fafc; }
+        footer { text-align: center; padding: 3rem 1rem; border-top: 1px solid var(--border-color); font-size: 0.85rem; }
 
-        /* MOBİL İÇİN YARIM EKRAN KAYMASINI DÜZELTEN KODLAR */
-        @media (max-width: 768px) {
-            .form-grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .checkout-container {
-                grid-template-columns: 1fr;
-            }
+        /* MOBİL UYUMLULUK */
+        @media (max-width: 850px) {
+            .form-grid-2 { grid-template-columns: 1fr; }
+            .checkout-container { grid-template-columns: 1fr; }
+            .kpi-section .section-header h2 { flex-direction: column; text-align: center; gap: 10px; }
+            .live-badge { margin-left: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ÜST MENÜ -->
     <header>
         <div class="nav-container">
             <div class="brand">
-                MikroCore Teknoloji <span class="tag">G02</span>
+                MikroCore <span class="tag">G02</span>
             </div>
             <nav>
-                <a href="#anasayfa">Ana Sayfa</a>
                 <a href="#hakkimizda">Hakkımızda</a>
                 <a href="#ekip">Yönetim</a>
                 <a href="#katalog">Ürünler</a>
                 <a href="#iletisim">İletişim</a>
                 <a href="#checkout" class="cart-nav-btn">
-                    🛒 Sepet <span id="navCartCount" style="background:#2563eb; color:white; padding:0.1rem 0.5rem; border-radius:10px; font-size:0.8rem;">0</span>
+                    Sepet <span id="navCartCount" style="background:#ffffff; color:#09090b; padding:0.1rem 0.5rem; border-radius:10px; font-size:0.75rem;">0</span>
                 </a>
             </nav>
         </div>
     </header>
 
-    <!-- 1. HERO (ANA SAYFA) -->
     <div class="hero" id="anasayfa">
-        <span class="badge-main">B2B & B2C Teknolojik Donanım Sağlayıcısı</span>
-        <h1>Geleceğin Teknolojisini Bugünden İnşa Ediyoruz</h1>
+        <span class="badge-main">B2B & B2C Teknolojik Donanım Ağı</span>
+        <h1>Geleceğin Teknolojisini<br>Bugünden İnşa Ediyoruz</h1>
         <p>MikroCore Teknoloji A.Ş. (G02), yüksek performanslı mikroişlemci mimarisinden yeni nesil akıllı ev çözümlerine kadar pazar standartlarını belirleyen entegre donanım altyapıları sunar.</p>
     </div>
 
-    <!-- HOCANIN İSTEDİĞİ YENİ KPI PANOSU -->
+    <!-- HOCANIN İSTEDİĞİ CANLI KPI PANOSU -->
     <section class="kpi-section">
-        <div class="section-header">
-            <h2 style="color: #ffffff;">Canlı KPI Metriklerimiz</h2>
-            <p style="color: #94a3b8;">Şirketimizin Temel Performans Göstergeleri (Key Performance Indicators)</p>
+        <div class="section-header" style="margin-bottom: 2.5rem;">
+            <h2>
+                Canlı Performans Metrikleri
+                <span class="live-badge"><span class="blink-dot"></span> SİSTEM AKTİF</span>
+            </h2>
+            <p>Son Senkronizasyon: <strong id="syncTime" style="color:var(--text-title);">Yükleniyor...</strong> <br> Veriler güvenli simülasyon sunucusundan çekilmektedir.</p>
         </div>
         <div class="kpi-grid">
             <div class="kpi-card">
-                <div class="kpi-value green">%100</div>
-                <div class="kpi-label">Günlük Üretim Kapasitesi</div>
+                <div class="kpi-value green">Tam Kapasite</div>
+                <div class="kpi-label">Günlük Üretim Durumu</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-value">3.670</div>
+                <div class="kpi-value">Yüksek Seviye</div>
                 <div class="kpi-label">Hazır İşlemci Stoğu</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-value purple">%98</div>
+                <div class="kpi-value purple">İdeal</div>
                 <div class="kpi-label">Saha Çalışan Memnuniyeti</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-value">0</div>
+                <div class="kpi-value">Minimum</div>
                 <div class="kpi-label">Lojistik Hasar Oranı</div>
             </div>
         </div>
@@ -757,18 +546,17 @@
 
     <div class="container">
 
-        <!-- 2. HAKKIMIZDA -->
         <section id="hakkimizda">
             <div class="section-header">
                 <h2>Kurumsal Kimliğimiz</h2>
                 <p>Veri odaklı yönetim, çevik operasyon ve sürdürülebilir büyüme vizyonumuz.</p>
             </div>
             <div class="grid-2">
-                <div class="info-card">
+                <div class="custom-card">
                     <h3>Biz Kimiz?</h3>
                     <p>MikroCore Teknoloji A.Ş., kurumsal donanım pazarında uzmanlaşmış yapısıyla sektörün lider teknoloji ekosistemlerinden biridir. Çevik yönetim modellerini (Agile) benimseyen karar destek mekanizmalarımız ve yüksek üretim kapasitemizle, iş ortaklarımızın operasyonel gereksinimlerine eksiksiz yanıt veriyoruz.</p>
                 </div>
-                <div class="info-card">
+                <div class="custom-card">
                     <h3>Misyon ve Vizyonumuz</h3>
                     <p><strong>Misyon:</strong> Bireysel ve kurumsal kullanıcıların dijital dönüşüm süreçlerine güç veren güvenilir, yüksek performanslı ve erişilebilir teknolojik donanımları kesintisiz tedarik zinciri güvencesiyle üretmek.</p>
                     <br>
@@ -777,107 +565,92 @@
             </div>
         </section>
 
-        <!-- 3. YÖNETİM KADROSU -->
         <section id="ekip">
             <div class="section-header">
-                <h2>Departmanlar ve Yönetim Kadromuz</h2>
+                <h2>Yönetim Kadromuz</h2>
                 <p>MikroCore Teknoloji A.Ş.'nin çevik organizasyon yapısı ve karar verici ekibi</p>
             </div>
             <div class="team-grid">
-                <div class="member-card">
-                    <div>
-                        <div class="badge-row">
-                            <span class="dept-badge">GENEL MÜDÜRLÜK</span>
-                            <span class="specialty-badge">İşletme & YBS</span>
-                        </div>
-                        <div class="member-name">İhsan Kaya</div>
-                        <div class="member-title">Genel Müdür (CEO) | Teknoloji ve İş Geliştirme</div>
-                        <div class="member-desc">Şirketin genel stratejisinin ve büyüme vizyonunun belirlenmesini yönetir. Teknoloji yatırımları, operasyonel senkronizasyon ve kurumsal performanstan sorumludur.</div>
+                <div class="custom-card">
+                    <div class="badge-row">
+                        <span class="dept-badge">Genel Müdürlük</span>
+                        <span class="specialty-badge">İşletme & YBS</span>
                     </div>
+                    <div class="member-name">İhsan Kaya</div>
+                    <div class="member-title">Genel Müdür (CEO)</div>
+                    <div class="member-desc">Şirketin genel stratejisinin ve büyüme vizyonunun belirlenmesini yönetir. Teknoloji yatırımları ve kurumsal performanstan sorumludur.</div>
                 </div>
 
-                <div class="member-card">
-                    <div>
-                        <div class="badge-row">
-                            <span class="dept-badge">PAZARLAMA & ÜRÜN</span>
-                            <span class="specialty-badge">YBS</span>
-                        </div>
-                        <div class="member-name">Ayça Nur Selim</div>
-                        <div class="member-title">Dijital Pazarlama ve Ürün Yöneticisi</div>
-                        <div class="member-desc">B2B/B2C pazarlama stratejilerinde uzmandır. Marka konumlandırma, büyüme stratejileri ve e-ticaret altyapılarının yönetiminden sorumludur.</div>
+                <div class="custom-card">
+                    <div class="badge-row">
+                        <span class="dept-badge">Pazarlama & Ürün</span>
+                        <span class="specialty-badge">YBS</span>
                     </div>
+                    <div class="member-name">Ayça Nur Selim</div>
+                    <div class="member-title">Dijital Pazarlama Yöneticisi</div>
+                    <div class="member-desc">B2B/B2C pazarlama stratejilerinde uzmandır. Marka konumlandırma, büyüme stratejileri ve e-ticaret altyapılarının yönetiminden sorumludur.</div>
                 </div>
 
-                <div class="member-card">
-                    <div>
-                        <div class="badge-row">
-                            <span class="dept-badge">OPERASYON & LOJİSTİK</span>
-                            <span class="specialty-badge">Süreç Modelleme</span>
-                        </div>
-                        <div class="member-name">Enes Aydoğan</div>
-                        <div class="member-title">Operasyon ve Lojistik Direktörü</div>
-                        <div class="member-desc">Üretim planlaması ve operasyonel modelleme alanındaki yetkinliklerini birleştiren analitik lider. Montaj bandı verimliliği ve B2B lojistik akışından sorumludur.</div>
+                <div class="custom-card">
+                    <div class="badge-row">
+                        <span class="dept-badge">Operasyon & Lojistik</span>
+                        <span class="specialty-badge">Süreç Modelleme</span>
                     </div>
+                    <div class="member-name">Enes Aydoğan</div>
+                    <div class="member-title">Operasyon Direktörü</div>
+                    <div class="member-desc">Üretim planlaması ve operasyonel modelleme alanındaki analitik lider. Montaj bandı verimliliği ve B2B lojistik akışından sorumludur.</div>
                 </div>
 
-                <div class="member-card">
-                    <div>
-                        <div class="badge-row">
-                            <span class="dept-badge">FİNANS & RİSK</span>
-                            <span class="specialty-badge">Mali Denetim</span>
-                        </div>
-                        <div class="member-name">Hamza Emin Demir</div>
-                        <div class="member-title">Finans Müdürü | Risk ve Etik Sorumlusu</div>
-                        <div class="member-desc">Finansal süreçlerin şeffaf yürütülmesini sağlayan; nakit akışı yönetimi ile operasyonların kurumsal etik ilkelerine uygunluğunu denetleyen yönetici.</div>
+                <div class="custom-card">
+                    <div class="badge-row">
+                        <span class="dept-badge">Finans & Risk</span>
+                        <span class="specialty-badge">Mali Denetim</span>
                     </div>
+                    <div class="member-name">Hamza Emin Demir</div>
+                    <div class="member-title">Finans Müdürü</div>
+                    <div class="member-desc">Finansal süreçlerin şeffaf yürütülmesini sağlayan; nakit akışı yönetimi ile operasyonların kurumsal etik ilkelerine uygunluğunu denetleyen yönetici.</div>
                 </div>
 
-                <div class="member-card">
-                    <div>
-                        <div class="badge-row">
-                            <span class="dept-badge">BİLİŞİM & VERİ</span>
-                            <span class="specialty-badge">Bilgisayar Müh.</span>
-                        </div>
-                        <div class="member-name">Zehra Yılmaz</div>
-                        <div class="member-title">BT ve Veri Yapıları Müdürü</div>
-                        <div class="member-desc">Kurumsal teknoloji altyapısı, veri mimarisi ve bilgi güvenliği alanlarında deneyimli BT yöneticisi. İş hedeflerini teknoloji çözümleriyle buluşturur.</div>
+                <div class="custom-card">
+                    <div class="badge-row">
+                        <span class="dept-badge">Bilişim & Veri</span>
+                        <span class="specialty-badge">Bilgisayar Müh.</span>
                     </div>
+                    <div class="member-name">Zehra Yılmaz</div>
+                    <div class="member-title">BT ve Veri Yapıları Müdürü</div>
+                    <div class="member-desc">Kurumsal teknoloji altyapısı, veri mimarisi ve bilgi güvenliği alanlarında deneyimli BT yöneticisi. İş hedeflerini teknoloji çözümleriyle buluşturur.</div>
                 </div>
 
-                <div class="member-card">
-                    <div>
-                        <div class="badge-row">
-                            <span class="dept-badge">İK & TEDARİK</span>
-                            <span class="specialty-badge">YBS</span>
-                        </div>
-                        <div class="member-name">Muhammet Bilal Kara</div>
-                        <div class="member-title">İnsan Kaynakları ve Tedarik Müdürü</div>
-                        <div class="member-desc">İnsan kaynağı ihtiyaçlarının değerlendirilmesi, çalışan bağlılığı ile satın alma süreçlerinin takibini başarıyla koordine eden organizasyon yöneticisi.</div>
+                <div class="custom-card">
+                    <div class="badge-row">
+                        <span class="dept-badge">İK & Tedarik</span>
+                        <span class="specialty-badge">YBS</span>
                     </div>
+                    <div class="member-name">Muhammet Bilal Kara</div>
+                    <div class="member-title">İK ve Tedarik Müdürü</div>
+                    <div class="member-desc">İnsan kaynağı ihtiyaçlarının değerlendirilmesi, çalışan bağlılığı ile satın alma süreçlerinin takibini başarıyla koordine eden organizasyon yöneticisi.</div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. ÜRÜN KATALOĞU -->
+        <!-- ÜRÜNLER (STOK SAYILARI GİZLİ, ÖZGÜN TASARIM) -->
         <section id="katalog">
             <div class="section-header">
-                <h2>MikroCore Satış Kataloğu</h2>
-                <p>Ürünlerinizi sepetinize ekleyerek B2B kurumsal veya B2C bireysel siparişinizi oluşturun.</p>
+                <h2>MikroCore Donanım Kataloğu</h2>
+                <p>Ürünlerinizi sepetinize ekleyerek siparişinizi oluşturun.</p>
             </div>
 
             <div class="product-grid-dark">
                 <!-- İşlemci Modülü -->
-                <div class="product-card-dark">
-                    <h3>MC-26 İşlemci Modülü (B2B)</h3>
+                <div class="custom-card" style="display:flex; flex-direction:column;">
+                    <h3>MC-26 İşlemci Modülü <span style="font-size:0.8rem; font-weight:normal; color:var(--accent-primary);">/ B2B</span></h3>
                     <p class="product-desc-dark">Donanım üretimi için zorunlu olan temel modülümüz. Diğer şirketlere hızlı ve toplu olarak temin edilir.</p>
-                    
                     <div class="tags-dark">
-                        <span>Yüksek Hassasiyet</span><span>OEM Uyumlu</span><span>B2B Toplu Satış</span>
+                        <span>Yüksek Hassasiyet</span><span>OEM Uyumlu</span><span>Toplu Satış</span>
                     </div>
-                    
                     <div class="price-box-dark">
                         <div class="stock-badge-dark">
-                            <span class="dot-green"></span> 3.670 Adet Hazır Stok
+                            <span class="dot-green"></span> Yüksek Stok Hacmi
                         </div>
                         <div class="price-row">
                             <span class="label">Ulusal Pazar:</span> 
@@ -887,26 +660,23 @@
                             <span class="label">Yurt Dışı Pazarı:</span> 
                             <span class="val-eu">5 €</span>
                         </div>
-                        <div class="note">Toplu alımlarda pazarlık ve özel indirim yapılır.</div>
+                        <div class="note">Toplu alımlarda özel indirim uygulanır.</div>
                     </div>
-                    
-                    <button class="btn-add-cart-dark" onclick="addToCart('MC-26 İşlemci Modülü', 170)">
-                        + Sepete Ekle
+                    <button class="btn-primary" onclick="addToCart('MC-26 İşlemci Modülü', 170)">
+                        Sepete Ekle
                     </button>
                 </div>
 
                 <!-- SmartBox -->
-                <div class="product-card-dark">
-                    <h3>SmartBox</h3>
-                    <p class="product-desc-dark">Tüm parçaları bir araya getirilerek üretilen ve doğrudan satışa hazır nihai ürünümüzdür.</p>
-                    
+                <div class="custom-card" style="display:flex; flex-direction:column;">
+                    <h3>SmartBox Asistan <span style="font-size:0.8rem; font-weight:normal; color:var(--text-body);">/ B2C</span></h3>
+                    <p class="product-desc-dark">Tüm parçaları bir araya getirilerek üretilen ve doğrudan satışa hazır nihai akıllı ürünümüzdür.</p>
                     <div class="tags-dark">
-                        <span>Tak & Çalıştır</span><span>Tam Entegre</span><span>Perakende Garanti</span>
+                        <span>Tak & Çalıştır</span><span>Tam Entegre</span><span>Perakende Onaylı</span>
                     </div>
-                    
                     <div class="price-box-dark">
                         <div class="stock-badge-dark warning">
-                            <span class="dot-orange"></span> Sınırlı Stok (Son Ürünler)
+                            <span class="dot-orange"></span> Sınırlı Stok (Ön Sipariş)
                         </div>
                         <div class="price-row">
                             <span class="label">Ulusal Pazar:</span> 
@@ -916,163 +686,157 @@
                             <span class="label">Yurt Dışı Pazarı:</span> 
                             <span class="val-eu">155 €</span>
                         </div>
-                        <div class="note">Tam montajlı, garantili ve sevkiyata hazır nihai kutu.</div>
+                        <div class="note">Tam montajlı, garantili nihai kutu.</div>
                     </div>
-                    
-                    <button class="btn-add-cart-dark" onclick="addToCart('SmartBox Akıllı Asistan', 5500)">
-                        + Sepete Ekle
+                    <button class="btn-primary" onclick="addToCart('SmartBox Akıllı Asistan', 5500)">
+                        Sepete Ekle
                     </button>
                 </div>
             </div>
 
-            <!-- Teslimat ve Koşullar -->
             <div class="conditions-section">
-                <h3 class="conditions-title">⚡ Teslimat, Ödeme ve Ticaret Koşulları</h3>
+                <h3 class="conditions-title">Ticaret ve Operasyon Koşulları</h3>
                 <div class="conditions-grid">
-                    <div class="condition-card">
-                        <h4>📦 Anında Stoktan Teslim</h4>
-                        <p>Yüksek adetli MC-26 hazır stoğu ile beklemeden anında sevkiyat imkânı.</p>
+                    <div class="custom-card" style="padding: 1.5rem;">
+                        <h4>Anında Teslimat</h4>
+                        <p>Hazır MC-26 stoğu ile beklemeden anında kurumsal sevkiyat imkânı.</p>
                     </div>
-                    <div class="condition-card">
-                        <h4>🔄 Takas Seçeneği</h4>
-                        <p>Karşılıklı anlaşma çerçevesinde ürün ve bileşen takası / barter yapılır.</p>
+                    <div class="custom-card" style="padding: 1.5rem;">
+                        <h4>Takas / Barter</h4>
+                        <p>Karşılıklı anlaşma çerçevesinde şirketler arası ürün takası yapılır.</p>
                     </div>
-                    <div class="condition-card">
-                        <h4>💳 Esnek Ödeme</h4>
-                        <p>İş ortaklarımıza özel peşin veya vadeli esnek ödeme seçenekleri mevcuttur.</p>
+                    <div class="custom-card" style="padding: 1.5rem;">
+                        <h4>Esnek Ödeme</h4>
+                        <p>İş ortaklarımıza özel peşin veya vadeli esnek ödeme seçenekleri.</p>
                     </div>
-                    <div class="condition-card">
-                        <h4>🤝 Toplu Alım İndirimi</h4>
-                        <p>Yüksek adetli B2B siparişlerde pazarlık ve cazip fiyat indirimi sağlanır.</p>
+                    <div class="custom-card" style="padding: 1.5rem;">
+                        <h4>B2B İndirimi</h4>
+                        <p>Yüksek adetli kurumsal siparişlerde pazarlık ve özel fiyatlandırma.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. SEPET VE CHECKOUT FORMU -->
+        <!-- SİPARİŞ VE CHECKOUT -->
         <section id="checkout">
-            <div class="section-header" style="margin-bottom: 1rem;">
+            <div class="section-header">
                 <h2>Sipariş ve Ödeme Ekranı</h2>
             </div>
 
             <div class="checkout-container">
-                <!-- Sepet Özeti -->
                 <div class="cart-summary">
-                    <h4>🛒 Sepetiniz</h4>
+                    <h4>Sipariş Özeti</h4>
                     <div class="cart-items" id="cartItemsContainer">
-                        <div class="empty-cart-msg">Sepetinizde henüz ürün bulunmamaktadır.<br>Katalogdan ürün ekleyebilirsiniz.</div>
+                        <div class="empty-cart-msg">Sepetiniz boş. Katalogdan ürün ekleyin.</div>
                     </div>
                     <div class="cart-total">
                         <span>Toplam:</span>
-                        <span id="cartTotalVal">0 TL</span>
+                        <span id="cartTotalVal">0 ₺</span>
                     </div>
                 </div>
 
-                <!-- FORM ALANI -->
                 <div id="formViewArea">
-                    
                     <div class="alert-box-warning">
                         <span style="font-size: 1.5rem;">⚠️</span>
                         <div>
-                            <strong>Önemli Bilgilendirme:</strong> Lig kuralları gereği, web alışverişine hazırlıklarımız tamamlanmış olup, <strong>satın alma bağlantısı lig yöneticisinin geçiş onayından sonra etkinleşir.</strong> Sipariş talepleriniz ön kayıt olarak alınmaktadır.
+                            <strong>Zorunlu Bildirim:</strong> Lig kuralları gereği, web alışverişine hazırlıklarımız tamamlanmış olup, <strong>satın alma bağlantısı lig yöneticisinin geçiş onayından sonra etkinleşir.</strong> Sipariş talepleriniz ön kayıt olarak alınmaktadır.
                         </div>
                     </div>
 
                     <form id="orderForm" onsubmit="processCheckout(event)">
-                        <input type="hidden" name="_subject" value="MİKROCORE YENİ SİPARİŞ TALEBİ!">
+                        <input type="hidden" name="_subject" value="MİKROCORE YENİ SİPARİŞ!">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="Sepet_Detayi" id="hiddenCartData" value="">
                         <input type="hidden" name="Toplam_Tutar" id="hiddenTotalData" value="">
 
                         <div class="form-grid-2">
                             <div class="form-group-dark">
-                                <label>Ad Soyad / Yetkili</label>
-                                <input type="text" name="Musteri_AdSoyad" placeholder="Adınız Soyadınız" required>
+                                <label>Yetkili Ad Soyad</label>
+                                <input type="text" name="Musteri_AdSoyad" required>
                             </div>
                             <div class="form-group-dark">
-                                <label>Kurum / Şirket Adı</label>
-                                <input type="text" name="Kurum_Sirket_Adi" placeholder="Örn: BulutOS A.Ş. (Bireyselse boş bırakın)">
+                                <label>Kurum / Şirket Kodu</label>
+                                <input type="text" name="Kurum_Sirket_Adi">
                             </div>
                         </div>
 
                         <div class="form-group-dark">
-                            <label>İletişim E-posta</label>
-                            <input type="email" name="Musteri_Eposta" placeholder="ornek@sirket.com" required>
+                            <label>Kurumsal E-posta</label>
+                            <input type="email" name="Musteri_Eposta" required>
                         </div>
 
                         <div class="form-group-dark">
-                            <label>Ödeme Tercihi</label>
+                            <label>Ticari Ödeme Tercihi</label>
                             <select name="Odeme_Tipi" required>
-                                <option value="">Lütfen seçiniz...</option>
-                                <option value="Peşin">Peşin Ödeme (Kredi Kartı / Havale)</option>
-                                <option value="Vadeli">1 Tur Vadeli Sözleşme (Sadece Onaylı B2B)</option>
+                                <option value="">Seçiniz...</option>
+                                <option value="Peşin">Peşin Ödeme</option>
+                                <option value="Vadeli">1 Tur Vadeli Sözleşme (B2B)</option>
                             </select>
                         </div>
 
                         <div class="form-group-dark">
-                            <label>Teslimat Adresi ve Sipariş Notu</label>
-                            <textarea rows="3" name="Siparis_Notu" placeholder="Açık adres veya toplu sipariş iskontosu notunuz..."></textarea>
+                            <label>Sipariş / Sevkiyat Notu</label>
+                            <textarea rows="3" name="Siparis_Notu"></textarea>
                         </div>
 
-                        <button type="submit" class="btn-checkout" id="submitBtn">
-                            🔒 Siparişi Tamamla
+                        <button type="submit" class="btn-primary" id="submitBtn">
+                            Siparişi Güvenle Tamamla
                         </button>
                     </form>
                 </div>
 
-                <!-- BAŞARILI SİPARİŞ EKRANI -->
                 <div id="successViewArea" class="success-screen" style="display: none;">
                     <div class="success-icon">✓</div>
-                    <div class="success-title">Sipariş Talebiniz Başarıyla Alındı!</div>
-                    <div class="success-desc">Tedarik ve Satış departmanımız talebinizi inceleyerek belirtmiş olduğunuz kurumsal e-posta ve telefon üzerinden en kısa sürede sizinle iletişime geçecektir.</div>
-                    
-                    <div class="tracking-box" id="trackingCode">Takip Kodu: STK-3812</div>
-                    
-                    <button class="btn-new-order" onclick="resetOrder()">Yeni Sipariş Talebi Oluştur</button>
+                    <div class="success-title">Talebiniz Alındı</div>
+                    <div class="success-desc">Tedarik birimimiz belirttiğiniz e-posta üzerinden sizinle en kısa sürede iletişime geçecektir.</div>
+                    <div class="tracking-box" id="trackingCode">STK-3812</div>
+                    <button class="btn-primary" style="width: auto; padding: 0.8rem 2rem;" onclick="resetOrder()">Yeni İşlem Başlat</button>
                 </div>
             </div>
         </section>
 
-        <!-- 6. İLETİŞİM / E-POSTA ADRESLERİ -->
         <section id="iletisim">
             <div class="section-header">
-                <h2>İletişim Bilgilerimiz</h2>
-                <p>Kurumsal görüşmeler ve B2B iş ortaklıkları için departman yetkililerimize doğrudan ulaşabilirsiniz.</p>
+                <h2>İletişim & Ağ</h2>
+                <p>İş ortaklıkları için doğrudan yönetim ekibimizle iletişime geçin.</p>
                 
-                <!-- BT ONAY GÖREV KODU EKLENDİ -->
-                <input type="text" value="ALYA-26-02" readonly style="font-family: monospace; font-size: 1.1rem; font-weight: bold; background: #1e293b; color: #34d399; border: 2px dashed #34d399; padding: 0.8rem; max-width: 250px; text-align: center; border-radius: 6px; margin: 1.5rem auto 0 auto; display: block; outline: none; cursor: default;" title="BT Birimi Doğrulama Kodu">
+                <!-- BT ONAY GÖREV KODU (YENİ TEMAYA UYGUN) -->
+                <div style="margin-top: 2rem;">
+                    <p style="font-size: 0.8rem; color: var(--text-body); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Sistem Sevk Doğrulama Kodu</p>
+                    <input type="text" value="ALYA-26-02" readonly style="font-family: monospace; font-size: 1.2rem; font-weight: bold; background: var(--accent-glow); color: var(--accent-primary); border: 1px solid var(--accent-primary); padding: 0.8rem; max-width: 250px; text-align: center; border-radius: 8px; margin: 0 auto; display: block; outline: none; cursor: default;">
+                </div>
             </div>
             
             <div class="contact-grid">
                 <div class="contact-card">
                     <h4>İhsan Kaya</h4>
                     <p class="title">Genel Müdür</p>
-                    <a href="mailto:ihsan.kaya@example.com">✉ ihsan.kaya@example.com</a>
+                    <a href="mailto:ihsan.kaya@example.com">ihsan.kaya@example.com</a>
                 </div>
                 <div class="contact-card">
                     <h4>Ayça Nur Selim</h4>
-                    <p class="title">Dijital Pazarlama & Ürün</p>
-                    <a href="mailto:aycanurselim314@gmail.com">✉ aycanurselim314@gmail.com</a>
+                    <p class="title">Dijital Pazarlama</p>
+                    <a href="mailto:aycanurselim314@gmail.com">aycanurselim314@gmail.com</a>
                 </div>
                 <div class="contact-card">
                     <h4>Zehra Yılmaz</h4>
                     <p class="title">BT & Veri Yapıları</p>
-                    <a href="mailto:zzehraylmaaz@gmail.com">✉ zzehraylmaaz@gmail.com</a>
+                    <a href="mailto:zzehraylmaaz@gmail.com">zzehraylmaaz@gmail.com</a>
                 </div>
                 <div class="contact-card">
                     <h4>Hamza Emin Demir</h4>
                     <p class="title">Finans & Risk</p>
-                    <a href="mailto:hamzademir01q@gmail.com">✉ hamzademir01q@gmail.com</a>
+                    <a href="mailto:hamzademir01q@gmail.com">hamzademir01q@gmail.com</a>
                 </div>
                 <div class="contact-card">
                     <h4>Enes Aydoğan</h4>
                     <p class="title">Operasyon & Lojistik</p>
-                    <a href="mailto:enesaydogan9677@gmail.com">✉ enesaydogan9677@gmail.com</a>
+                    <a href="mailto:enesaydogan9677@gmail.com">enesaydogan9677@gmail.com</a>
                 </div>
                 <div class="contact-card">
                     <h4>Muhammet Bilal Kara</h4>
                     <p class="title">İK & Tedarik</p>
-                    <a href="mailto:muhammetbilalkara54@gmail.com">✉ muhammetbilalkara54@gmail.com</a>
+                    <a href="mailto:muhammetbilalkara54@gmail.com">muhammetbilalkara54@gmail.com</a>
                 </div>
             </div>
         </section>
@@ -1083,8 +847,18 @@
         <p>&copy; 2026 MikroCore Teknoloji A.Ş. (G02) — Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- JAVASCRIPT KODLARI (MAİL GÖNDERİM SİSTEMİ DAHİL) -->
+    <!-- JAVASCRIPT: SAAT, SEPET VE MAİL -->
     <script>
+        // CANLI SAAT VE TARİH
+        function updateSyncTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('syncTime').innerText = now.toLocaleDateString('tr-TR', options);
+        }
+        updateSyncTime();
+        setInterval(updateSyncTime, 1000);
+
+        // SEPET MANTIĞI
         let cart = [];
 
         function addToCart(name, price) {
@@ -1116,8 +890,8 @@
             const navCount = document.getElementById('navCartCount');
             
             if (cart.length === 0) {
-                container.innerHTML = '<div class="empty-cart-msg">Sepetinizde henüz ürün bulunmamaktadır.<br>Katalogdan ürün ekleyebilirsiniz.</div>';
-                totalEl.innerText = "0 TL";
+                container.innerHTML = '<div class="empty-cart-msg">Sepetiniz boş. Katalogdan ürün ekleyin.</div>';
+                totalEl.innerText = "0 ₺";
                 navCount.innerText = "0";
                 return;
             }
@@ -1135,11 +909,11 @@
                 <div class="cart-item">
                     <div class="item-details">
                         <h5>${item.name}</h5>
-                        <p>${item.price.toLocaleString('tr-TR')} TL x ${item.qty} = <strong>${itemTotal.toLocaleString('tr-TR')} TL</strong></p>
+                        <p style="color:var(--text-body); font-size:0.8rem;">${item.price.toLocaleString('tr-TR')} ₺ x ${item.qty} = <strong style="color:var(--text-title);">${itemTotal.toLocaleString('tr-TR')} ₺</strong></p>
                     </div>
                     <div class="item-actions">
                         <button type="button" class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
-                        <span style="font-weight:bold; width:20px; text-align:center;">${item.qty}</span>
+                        <span style="font-weight:bold; width:20px; text-align:center; color:var(--text-title);">${item.qty}</span>
                         <button type="button" class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
                     </div>
                 </div>
@@ -1147,10 +921,11 @@
             });
 
             container.innerHTML = html;
-            totalEl.innerText = total.toLocaleString('tr-TR') + " TL";
+            totalEl.innerText = total.toLocaleString('tr-TR') + " ₺";
             navCount.innerText = totalItems;
         }
 
+        // MAİL GÖNDERİMİ (FORMSUBMIT)
         function processCheckout(e) {
             e.preventDefault(); 
             if (cart.length === 0) {
@@ -1167,7 +942,7 @@
             const data = Object.fromEntries(formData.entries());
             
             const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerHTML = "⏳ Sipariş İletiliyor...";
+            submitBtn.innerHTML = "İletiliyor...";
             submitBtn.disabled = true;
 
             fetch("https://formsubmit.co/ajax/aycanurselim314@gmail.com", {
@@ -1181,17 +956,17 @@
             .then(response => response.json())
             .then(data => {
                 let randomCode = Math.floor(1000 + Math.random() * 9000);
-                document.getElementById('trackingCode').innerText = "Takip Kodu: STK-" + randomCode;
+                document.getElementById('trackingCode').innerText = "KOD: STK-" + randomCode;
 
                 document.getElementById('formViewArea').style.display = 'none';
                 document.getElementById('successViewArea').style.display = 'flex';
                 
-                submitBtn.innerHTML = "🔒 Siparişi Tamamla";
+                submitBtn.innerHTML = "Siparişi Güvenle Tamamla";
                 submitBtn.disabled = false;
             })
             .catch(error => {
                 alert("Sipariş alınırken bir ağ hatası oluştu, lütfen tekrar deneyiniz.");
-                submitBtn.innerHTML = "🔒 Siparişi Tamamla";
+                submitBtn.innerHTML = "Siparişi Güvenle Tamamla";
                 submitBtn.disabled = false;
             });
         }
