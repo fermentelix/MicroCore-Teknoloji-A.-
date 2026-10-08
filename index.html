@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MikroCore Teknoloji A.Ş. | Geleceğin Donanım Mimarisi</title>
+    <title>MikroCore Teknoloji A.Ş. (G02) | B2B & B2C E-Ticaret Portalı</title>
     <style>
         :root {
             --primary: #0f172a;
@@ -14,9 +14,9 @@
             --text-main: #1e293b;
             --text-muted: #64748b;
             --border: #e2e8f0;
-            --warning-bg: #fffbeb;
-            --warning-border: #fef3c7;
-            --warning-text: #b45309;
+            --dark-card: #0b1329;
+            --dark-card-inner: #111c38;
+            --cyan-accent: #00d2ff;
         }
 
         * {
@@ -30,7 +30,7 @@
         body {
             background-color: var(--background);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         header {
@@ -42,7 +42,7 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
@@ -51,23 +51,33 @@
         }
 
         .brand {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--primary);
-            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .brand span {
-            color: var(--accent);
+        .brand span.tag {
+            background-color: #2563eb;
+            color: #ffffff;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         nav a {
             text-decoration: none;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.95rem;
             margin-left: 1.5rem;
             transition: color 0.2s;
         }
@@ -75,197 +85,309 @@
         nav a:hover {
             color: var(--accent);
         }
+        
+        .cart-nav-btn {
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-left: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid #bfdbfe;
+        }
 
         .container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 1rem 5rem 1rem;
-            background: linear-gradient(180deg, #ffffff 0%, var(--background) 100%);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: #dbeafe;
-            color: var(--accent);
-            padding: 0.35rem 0.8rem;
-            border-radius: 9999px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        section {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
+            padding: 2.5rem 1.5rem;
         }
 
         .section-header {
+            text-align: center;
             margin-bottom: 2.5rem;
         }
 
         .section-header h2 {
             font-size: 2rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--primary);
         }
 
         .section-header p {
             color: var(--text-muted);
+            margin-top: 0.3rem;
         }
 
-        .grid-2 {
+        /* --- ÜRÜN KATALOĞU (SEPETE EKLE BUTONLU) --- */
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
+        .product-card {
             background-color: var(--surface);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
         }
 
         .card-tag {
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
             display: inline-block;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            align-self: flex-start;
         }
 
-        .tag-expert {
-            background-color: #dcfce7;
-            color: #15803d;
-        }
+        .tag-b2b { background-color: #dbeafe; color: #1e40af; }
+        .tag-b2c { background-color: #f3e8ff; color: #6b21a8; }
 
-        .tag-b2c {
-            background-color: #f3e8ff;
-            color: #7e22ce;
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
+        .product-card h3 {
+            font-size: 1.4rem;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
+        
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            flex-grow: 1;
+        }
 
         .price-box {
-            margin: 1.25rem 0;
-            padding: 0.75rem 0;
+            margin: 1.5rem 0;
+            padding: 1rem 0;
             border-top: 1px dashed var(--border);
             border-bottom: 1px dashed var(--border);
         }
 
         .price {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: var(--accent);
-        }
-
-        .stock-info {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        .alert-box {
-            background-color: var(--warning-bg);
-            border: 1px solid var(--warning-border);
-            color: var(--warning-text);
-            padding: 1.25rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-            font-size: 0.95rem;
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.4rem;
-            font-weight: 600;
-            font-size: 0.9rem;
             color: var(--primary);
         }
 
-        input, select, textarea {
+        .stock-info {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #059669;
+            margin-top: 0.3rem;
+        }
+
+        .btn-add-cart {
             width: 100%;
+            background-color: #f8fafc;
+            color: var(--accent);
+            border: 2px solid var(--accent);
             padding: 0.8rem;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background: #ffffff;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        input:focus, select:focus, textarea:focus {
-            outline: 2px solid var(--accent);
-            border-color: transparent;
-        }
-
-        button.btn {
+        .btn-add-cart:hover {
             background-color: var(--accent);
             color: #ffffff;
-            border: none;
-            padding: 0.8rem 1.8rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
         }
 
-        button.btn:hover {
-            background-color: var(--accent-hover);
+        /* --- SİPARİŞ / CHECKOUT FORMU (GELİŞMİŞ E-TİCARET YAPISI) --- */
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            background: linear-gradient(180deg, #070d1e 0%, #0b1329 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 850px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sol Taraf: Sepet Özeti */
+        .cart-summary {
+            background-color: var(--dark-card-inner);
+            border: 1px solid #1e2d4d;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: fit-content;
+        }
+
+        .cart-summary h4 {
+            font-size: 1.2rem;
+            border-bottom: 1px solid #1e2d4d;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            color: var(--cyan-accent);
+        }
+
+        .cart-items {
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0f172a;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            border: 1px solid #1e293b;
+        }
+
+        .item-details h5 {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            margin-bottom: 0.2rem;
+        }
+        .item-details p { font-size: 0.8rem; color: #94a3b8; }
+        
+        .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .qty-btn {
+            background: #334155;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-total {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #1e2d4d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+        
+        .empty-cart-msg {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            padding: 2rem 0;
+            font-style: italic;
+        }
+
+        /* Sağ Taraf: Müşteri Formu */
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group-dark {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group-dark label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        .form-group-dark input, 
+        .form-group-dark select, 
+        .form-group-dark textarea {
+            background-color: var(--dark-card-inner);
+            border: 1px solid #1e2d4d;
+            border-radius: 6px;
+            padding: 0.85rem;
+            color: #ffffff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group-dark input:focus, 
+        .form-group-dark select:focus, 
+        .form-group-dark textarea:focus {
+            border-color: var(--cyan-accent);
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transition: transform 0.2s, opacity 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn-checkout:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .alert-box {
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
         footer {
-            background-color: var(--primary);
-            color: #94a3b8;
-            padding: 3rem 2rem;
             text-align: center;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: #ffffff;
-            text-decoration: none;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
         }
     </style>
 </head>
@@ -273,169 +395,223 @@
 
     <header>
         <div class="nav-container">
-            <div class="brand">MikroCore <span>Teknoloji</span></div>
+            <div class="brand">
+                MikroCore Teknoloji <span class="tag">G02</span>
+            </div>
             <nav>
-                <a href="#anasayfa">Ana Sayfa</a>
-                <a href="#hakkimizda">Hakkımızda</a>
-                <a href="#katalog">Katalog & Fiyatlar</a>
-                <a href="#departmanlar">Yönetim</a>
-                <a href="#iletisim">İletişim & B2B Sipariş</a>
+                <a href="#katalog">Ürünler</a>
+                <a href="#checkout" class="cart-nav-btn">
+                    🛒 Sepet <span id="navCartCount" style="background:#2563eb; color:white; padding:0.1rem 0.5rem; border-radius:10px; font-size:0.8rem;">0</span>
+                </a>
             </nav>
         </div>
     </header>
 
-    <div class="hero" id="anasayfa">
-        <span class="badge">B2B & B2C Teknolojik Donanım Sağlayıcısı</span>
-        <h1>Geleceğin Teknolojisini Bugünden İnşa Ediyoruz</h1>
-        <p>MikroCore Teknoloji A.Ş. (G02), yüksek performanslı mikroişlemci mimarisinden yeni nesil akıllı ev çözümlerine kadar pazar standartlarını belirleyen entegre donanım altyapıları sunar.</p>
-        <a href="#katalog"><button class="btn">Ürün Kataloğunu İncele</button></a>
-    </div>
-
     <div class="container">
 
-        <section id="hakkimizda">
-            <div class="section-header">
-                <h2>Kurumsal Kimliğimiz</h2>
-                <p>Veri odaklı yönetim, çevik operasyon ve sürdürülebilir büyüme vizyonumuz.</p>
-            </div>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Biz Kimiz?</h3>
-                    <p>MikroCore Teknoloji A.Ş., kurumsal donanım pazarında uzmanlaşmış yapısıyla sektörün lider teknoloji ekosistemlerinden biridir. Çevik yönetim modellerini (Agile) benimseyen karar destek mekanizmalarımız ve yüksek üretim kapasitemizle, iş ortaklarımızın operasyonel gereksinimlerine eksiksiz yanıt veriyoruz.</p>
-                    <br>
-                    <p>Kurumsal yönetişim ve sosyal sorumluluk ilkelerimiz çerçevesinde, afet müdahale fonlarına ve sürdürülebilirlik projelerine aktif katkı sağlayarak sektörde güven ve değer inşa ediyoruz.</p>
-                </div>
-                <div class="card">
-                    <h3>Misyon ve Vizyonumuz</h3>
-                    <p><strong>Misyon:</strong> Bireysel ve kurumsal kullanıcıların dijital dönüşüm süreçlerine güç veren güvenilir, yüksek performanslı ve erişilebilir teknolojik donanımları kesintisiz tedarik zinciri güvencesiyle üretmek.</p>
-                    <br>
-                    <p><strong>Vizyon:</strong> Geleceğin olası pazar ve kapasite dalgalanmalarını proaktif risk yönetimi modelleriyle karşılayarak, global donanım ve mikroişlemci ekosisteminde standart belirleyici lider konumda kalmak.</p>
-                </div>
-            </div>
-        </section>
-
+        <!-- ÜRÜN KATALOĞU (SENSÖR SİLİNDİ, SEPETE EKLE GELDİ) -->
         <section id="katalog">
             <div class="section-header">
-                <h2>Ürün ve Hizmet Kataloğu</h2>
-                <p>Tüm ürün segmentleri, stok durumu, ödeme ve teslimat şartları.</p>
+                <h2>MikroCore Satış Kataloğu</h2>
+                <p>Ürünlerinizi sepetinize ekleyerek B2B kurumsal veya B2C bireysel siparişinizi oluşturun.</p>
             </div>
 
-            <div class="grid-3">
-                <div class="card">
-                    <span class="card-tag tag-expert">UZMANLIK ÜRÜNÜ</span>
-                    <h3>MC-26 İşlemci Modülü</h3>
-                    <p>Endüstri 4.0 ve IoT donanım üreticileri için optimize edilmiş yüksek verimli mimari.</p>
-                    <div class="price-box">
-                        <div class="price">160 TL <small style="font-size:0.9rem; color:var(--text-muted);">/ Peşin</small></div>
-                        <div class="stock-info">Güncel Stok: <strong>3.670 Adet</strong> (Hemen Teslim)</div>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Kurumsal B2B alımlarda 1 tur vadeli seçenekler mevcuttur.</p>
-                </div>
-
-                <div class="card">
-                    <span class="card-tag tag-b2c">PERAKENDE (B2C)</span>
-                    <h3>SmartBox Akıllı Asistan</h3>
-                    <p>Yeni nesil akıllı ev ekosistemleri için sesli komut ve merkezi otomasyon cihazı.</p>
-                    <div class="price-box">
-                        <div class="price">5500TL <small style="font-size:0.9rem; color:var(--text-muted);">(KDV Dahil)</small></div>
-                        <div class="stock-info">Stok: <strong>Yüksek Hacimli / Ön Siparişe Açık</strong></div>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Peşin veya esnek vadeli (taksitli) perakende ödeme imkânı.</p>
-                </div>
-
+            <div class="product-grid">
                 
+                <!-- Ürün 1 -->
+                <div class="product-card">
+                    <span class="card-tag tag-b2b">KURUMSAL B2B (UZMANLIK)</span>
+                    <h3>MC-26 İşlemci Modülü</h3>
+                    <p class="product-desc">Endüstri 4.0 donanım üreticileri için optimize edilmiş, düşük enerji tüketimli yüksek verimli işlemci mimarisi.</p>
+                    
+                    <div class="price-box">
+                        <div class="price">130 TL</div>
+                        <div class="stock-info">📦 3.670 Adet Hazır Stok</div>
+                    </div>
+                    
+                    <button class="btn-add-cart" onclick="addToCart('MC-26 İşlemci Modülü', 130)">
+                        + Sepete Ekle
+                    </button>
+                </div>
 
-            <div class="card" style="margin-top: 2rem;">
-                <h3>Satın Alma, Ödeme ve Teslimat Koşulları</h3>
-                <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-muted);">
-                    <li><strong>B2B Finansman Esnekliği:</strong> Kurumsal ortaklarımız için risk matrisine uygun olarak "Peşin" ve "1 Tur Vadeli" sözleşme modelleri uygulanmaktadır.</li>
-                    <li><strong>Lojistik ve Transfer:</strong> Stoklu MC-26 işlemci modüllerinin B2B sevkiyatları sipariş onayının ardından aynı gün lojistik merkezine teslim edilir.</li>
-                    <li><strong>B2C Vadeli Satış:</strong> SmartBox ürünlerinde bireysel müşterilerimiz için peşin ödemenin yanında vadeli ödeme seçenekleri sunulmaktadır.</li>
-                </ul>
+                <!-- Ürün 2 -->
+                <div class="product-card">
+                    <span class="card-tag tag-b2c">PERAKENDE B2C</span>
+                    <h3>SmartBox Akıllı Asistan</h3>
+                    <p class="product-desc">Yeni nesil akıllı ev ekosistemleri için, sesli komut ve merkezi otomasyon özellikli akıllı yaşam cihazı.</p>
+                    
+                    <div class="price-box">
+                        <div class="price">885 TL</div>
+                        <div class="stock-info">⚡ Yüksek Hacimli / Ön Sipariş</div>
+                    </div>
+                    
+                    <button class="btn-add-cart" onclick="addToCart('SmartBox Akıllı Asistan', 885)">
+                        + Sepete Ekle
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEPET VE CHECKOUT FORMU -->
+        <section id="checkout">
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <h2>Sipariş ve Ödeme Ekranı</h2>
             </div>
 
-            <div class="alert-box">
-                <span style="font-size: 1.5rem;">⚠️</span>
+            <div class="checkout-container">
+                
+                <!-- Sepet Özeti -->
+                <div class="cart-summary">
+                    <h4>🛒 Sepetiniz</h4>
+                    <div class="cart-items" id="cartItemsContainer">
+                        <!-- Sepet boşken bu görünür -->
+                        <div class="empty-cart-msg">Sepetinizde henüz ürün bulunmamaktadır.<br>Katalogdan ürün ekleyebilirsiniz.</div>
+                    </div>
+                    
+                    <div class="cart-total">
+                        <span>Toplam:</span>
+                        <span id="cartTotalVal">0 TL</span>
+                    </div>
+                </div>
+
+                <!-- Müşteri ve Ödeme Formu -->
                 <div>
-                    <strong>Online Web Alışverişi Uyarısı:</strong> Sitemiz üzerinden doğrudan web alışverişi ve "Sepete Ekle / Satın Al" bağlantıları, <strong>lig yöneticisinin geçiş onayından sonra etkinleşecektir</strong>. Siparişleriniz için lütfen aşağıdaki iletişim formunu kullanınız[cite: 13].
-                </div>
-            </div>
-        </section>
+                    <div class="alert-box">
+                        <span>⚠️</span>
+                        <span><strong>Web Alışverişi Uyarısı:</strong> Satın alma bağlantısı ve sepet onayı, <strong>lig yöneticisinin geçiş onayından sonra</strong> tam olarak etkinleşecektir.</span>
+                    </div>
 
-        <section id="departmanlar">
-            <div class="section-header">
-                <h2>Departman Yönetimi</h2>
-                <p>Entegre kurumsal yapımız ve görev dağılımı.</p>
-            </div>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>Dijital Pazarlama ve Ürün Yönetimi</h3>
-                    <p>Pazar payı analizleri, perakende fiyatlama politikaları ve web e-ticaret vitrininin koordinasyonu bu birim tarafından yürütülmektedir.</p>
-                    <p style="margin-top: 0.5rem; font-weight:600; color:var(--accent);">Departman Sorumlusu: Ayça Nur Selim</p>
-                </div>
-                <div class="card">
-                    <h3>BT, Veri Analitiği ve Operasyon</h3>
-                    <p>Sistem altyapısı, B2B entegrasyon formları, tedarik risk matrisi optimizasyonu ve ALYA-26 sevk kayıtlarının takibi sağlanmaktadır.</p>
-                    <p style="margin-top: 0.5rem; font-weight:600; color:var(--accent);">Departman: Bilgi Teknolojileri ve Üretim</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="iletisim">
-            <div class="section-header">
-                <h2>İletişim & B2B Sipariş Formu</h2>
-                <p>Toplu siparişler, vadeli anlaşmalar ve kurumsal bilgi talepleri.</p>
-            </div>
-            <div class="grid-2">
-                <div class="card">
-                    <form onsubmit="event.preventDefault(); alert('Talebiniz kaydedilmiştir. Lig yöneticisi onayı sonrası işleme alınacaktır.');">
-                        <div class="form-group">
-                            <label for="compName">Şirket Adı / Alıcı:</label>
-                            <input type="text" id="compName" placeholder="Örn: BulutOS veya Şirket Ünvanı" required>
+                    <form onsubmit="processCheckout(event)">
+                        <div class="form-grid-2">
+                            <div class="form-group-dark">
+                                <label>Ad Soyad / Yetkili</label>
+                                <input type="text" placeholder="Adınız Soyadınız" required>
+                            </div>
+                            <div class="form-group-dark">
+                                <label>Kurum / Şirket Adı</label>
+                                <input type="text" placeholder="Örn: BulutOS A.Ş. (Bireyselse boş bırakın)">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="productSelect">Talep Edilen Ürün:</label>
-                            <select id="productSelect">
-                                <option>MC-26 İşlemci Modülü (B2B)</option>
-                                <option>SmartBox Akıllı Asistan (B2C / Toptan)</option>
-                                <option>Sensör Kiti (B2B)</option>
+
+                        <div class="form-group-dark">
+                            <label>İletişim E-posta</label>
+                            <input type="email" placeholder="ornek@sirket.com" required>
+                        </div>
+
+                        <div class="form-group-dark">
+                            <label>Ödeme Tercihi</label>
+                            <select required>
+                                <option value="">Lütfen seçiniz...</option>
+                                <option>Peşin Ödeme (Kredi Kartı / Havale)</option>
+                                <option>1 Tur Vadeli Sözleşme (Sadece Onaylı B2B)</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="terms">Ödeme Tercihi:</label>
-                            <select id="terms">
-                                <option>Peşin Ödeme</option>
-                                <option>1 Tur Vadeli (B2B Sözleşmeli)</option>
-                                <option>Vadeli / Taksitli (B2C)</option>
-                            </select>
+
+                        <div class="form-group-dark">
+                            <label>Teslimat Adresi ve Sipariş Notu</label>
+                            <textarea rows="3" placeholder="Açık adres veya toplu sipariş iskontosu notunuz..."></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="notes">Sipariş Notları ve Hacim:</label>
-                            <textarea id="notes" rows="3" placeholder="Talep edilen adet ve teslimat notları..."></textarea>
-                        </div>
-                        <button type="submit" class="btn">Talebi Gönder</button>
+
+                        <button type="submit" class="btn-checkout">
+                            🔒 Siparişi Tamamla
+                        </button>
                     </form>
                 </div>
 
-                <div class="card">
-                    <h3>Kurumsal Merkez ve Doğrulama</h3>
-                    <p><strong>Genel Merkez:</strong> MikroCore Teknoloji Kampüsü, Kocaeli</p>
-                    <p><strong>E-Posta:</strong> info@mikrocore.com</p>
-                    <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border);">
-                    <div style="background-color: var(--background); padding: 1rem; border-radius: 6px;">
-                        <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem;">Sistem Sevk Doğrulama (MIS)</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">ALYA-26 kimlik öneki kayıt eşleştirmesi:</p>
-                        <input type="text" value="ALYA-26-G02-CONFIRMED" readonly style="font-family: monospace; font-size: 0.85rem; background: #e2e8f0; color: #334155;">
-                    </div>
-                </div>
             </div>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 MikroCore Teknoloji A.Ş. Tüm Hakları Saklıdır. | Simülasyon Web/MIS Altyapısı</p>
+        <p>&copy; 2026 MikroCore Teknoloji A.Ş. (G02) — Tüm Hakları Saklıdır.</p>
     </footer>
 
+    <!-- SEPET İŞLEMLERİ (JAVASCRIPT) -->
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            // Sepette var mı kontrol et
+            let existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name: name, price: price, qty: 1 });
+            }
+            
+            updateCartUI();
+            
+            // Kullanıcıyı sepete kaydır
+            document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateQuantity(index, delta) {
+            cart[index].qty += delta;
+            
+            // Eğer adet 0 veya altına düşerse ürünü sepetten çıkar
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const totalEl = document.getElementById('cartTotalVal');
+            const navCount = document.getElementById('navCartCount');
+            
+            // Sepet Boş mu?
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="empty-cart-msg">Sepetinizde henüz ürün bulunmamaktadır.<br>Katalogdan ürün ekleyebilirsiniz.</div>';
+                totalEl.innerText = "0 TL";
+                navCount.innerText = "0";
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            let totalItems = 0;
+
+            cart.forEach((item, index) => {
+                let itemTotal = item.price * item.qty;
+                total += itemTotal;
+                totalItems += item.qty;
+
+                html += `
+                <div class="cart-item">
+                    <div class="item-details">
+                        <h5>${item.name}</h5>
+                        <p>${item.price} TL x ${item.qty} = <strong>${itemTotal.toLocaleString('tr-TR')} TL</strong></p>
+                    </div>
+                    <div class="item-actions">
+                        <button type="button" class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                        <span style="font-weight:bold; width:20px; text-align:center;">${item.qty}</span>
+                        <button type="button" class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                    </div>
+                </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalEl.innerText = total.toLocaleString('tr-TR') + " TL";
+            navCount.innerText = totalItems;
+        }
+
+        function processCheckout(e) {
+            e.preventDefault(); // Sayfanın yenilenmesini engeller
+            
+            if (cart.length === 0) {
+                alert("Siparişi tamamlamak için lütfen önce sepetinize ürün ekleyin!");
+                return;
+            }
+
+            // Hocanın istediği lig yöneticisi uyarısını fırlatıyoruz
+            alert("SİPARİŞ İŞLEMİ BEKLEMEYE ALINDI:\n\nSatın alma bağlantısı ve ödeme işlemleri lig yöneticisinin geçiş onayından sonra etkinleşecektir. Simülasyon kuralları gereği onay beklenmektedir.");
+        }
+    </script>
 </body>
 </html>
