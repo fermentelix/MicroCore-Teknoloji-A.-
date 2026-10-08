@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MikroCore Teknoloji A.Ş. | Geleceğin Donanım Mimarisi</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --surface: #ffffff;
+            --background: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --warning-bg: #fffbeb;
+            --warning-border: #fef3c7;
+            --warning-text: #b45309;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem 5rem 1rem;
+            background: linear-gradient(180deg, #ffffff 0%, var(--background) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--accent);
+            padding: 0.35rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .tag-expert {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        .tag-b2c {
+            background-color: #f3e8ff;
+            color: #7e22ce;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-box {
+            margin: 1.25rem 0;
+            padding: 0.75rem 0;
+            border-top: 1px dashed var(--border);
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stock-info {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .alert-box {
+            background-color: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            color: var(--warning-text);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--accent);
+            border-color: transparent;
+        }
+
+        button.btn {
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button.btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: #94a3b8;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="brand">MikroCore <span>Teknoloji</span></div>
+            <nav>
+                <a href="#anasayfa">Ana Sayfa</a>
+                <a href="#hakkimizda">Hakkımızda</a>
+                <a href="#katalog">Katalog & Fiyatlar</a>
+                <a href="#departmanlar">Yönetim</a>
+                <a href="#iletisim">İletişim & B2B Sipariş</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero" id="anasayfa">
+        <span class="badge">B2B & B2C Teknolojik Donanım Sağlayıcısı</span>
+        <h1>Geleceğin Teknolojisini Bugünden İnşa Ediyoruz</h1>
+        <p>MikroCore Teknoloji A.Ş. (G02), yüksek performanslı mikroişlemci mimarisinden yeni nesil akıllı ev çözümlerine kadar pazar standartlarını belirleyen entegre donanım altyapıları sunar.</p>
+        <a href="#katalog"><button class="btn">Ürün Kataloğunu İncele</button></a>
+    </div>
+
+    <div class="container">
+
+        <section id="hakkimizda">
+            <div class="section-header">
+                <h2>Kurumsal Kimliğimiz</h2>
+                <p>Veri odaklı yönetim, çevik operasyon ve sürdürülebilir büyüme vizyonumuz.</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Biz Kimiz?</h3>
+                    <p>MikroCore Teknoloji A.Ş., kurumsal donanım pazarında uzmanlaşmış yapısıyla sektörün lider teknoloji ekosistemlerinden biridir. Çevik yönetim modellerini (Agile) benimseyen karar destek mekanizmalarımız ve yüksek üretim kapasitemizle, iş ortaklarımızın operasyonel gereksinimlerine eksiksiz yanıt veriyoruz.</p>
+                    <br>
+                    <p>Kurumsal yönetişim ve sosyal sorumluluk ilkelerimiz çerçevesinde, afet müdahale fonlarına ve sürdürülebilirlik projelerine aktif katkı sağlayarak sektörde güven ve değer inşa ediyoruz.</p>
+                </div>
+                <div class="card">
+                    <h3>Misyon ve Vizyonumuz</h3>
+                    <p><strong>Misyon:</strong> Bireysel ve kurumsal kullanıcıların dijital dönüşüm süreçlerine güç veren güvenilir, yüksek performanslı ve erişilebilir teknolojik donanımları kesintisiz tedarik zinciri güvencesiyle üretmek.</p>
+                    <br>
+                    <p><strong>Vizyon:</strong> Geleceğin olası pazar ve kapasite dalgalanmalarını proaktif risk yönetimi modelleriyle karşılayarak, global donanım ve mikroişlemci ekosisteminde standart belirleyici lider konumda kalmak.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="katalog">
+            <div class="section-header">
+                <h2>Ürün ve Hizmet Kataloğu</h2>
+                <p>Tüm ürün segmentleri, stok durumu, ödeme ve teslimat şartları.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <span class="card-tag tag-expert">UZMANLIK ÜRÜNÜ</span>
+                    <h3>MC-26 İşlemci Modülü</h3>
+                    <p>Endüstri 4.0 ve IoT donanım üreticileri için optimize edilmiş yüksek verimli mimari.</p>
+                    <div class="price-box">
+                        <div class="price">130 TL <small style="font-size:0.9rem; color:var(--text-muted);">/ Peşin</small></div>
+                        <div class="stock-info">Güncel Stok: <strong>3.670 Adet</strong> (Hemen Teslim)</div>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">Kurumsal B2B alımlarda 1 tur vadeli seçenekler mevcuttur.</p>
+                </div>
+
+                <div class="card">
+                    <span class="card-tag tag-b2c">PERAKENDE (B2C)</span>
+                    <h3>SmartBox Akıllı Asistan</h3>
+                    <p>Yeni nesil akıllı ev ekosistemleri için sesli komut ve merkezi otomasyon cihazı.</p>
+                    <div class="price-box">
+                        <div class="price">885 TL <small style="font-size:0.9rem; color:var(--text-muted);">(KDV Dahil)</small></div>
+                        <div class="stock-info">Stok: <strong>Yüksek Hacimli / Ön Siparişe Açık</strong></div>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">Peşin veya esnek vadeli (taksitli) perakende ödeme imkânı.</p>
+                </div>
+
+                <div class="card">
+                    <span class="card-tag">B2B BİLEŞEN</span>
+                    <h3>Endüstriyel Sensör Kiti</h3>
+                    <p>Otomasyon sistemleri için yüksek hassasiyetli çevresel veri algılama modülleri.</p>
+                    <div class="price-box">
+                        <div class="price">45 TL <small style="font-size:0.9rem; color:var(--text-muted);">/ Adet</small></div>
+                        <div class="stock-info">Güncel Stok: <strong>300 Adet</strong>[cite: 6]</div>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">Toplu siparişlerde doğrudan merkez stoktan sevk edilir.</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 2rem;">
+                <h3>Satın Alma, Ödeme ve Teslimat Koşulları</h3>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-muted);">
+                    <li><strong>B2B Finansman Esnekliği:</strong> Kurumsal ortaklarımız için risk matrisine uygun olarak "Peşin" ve "1 Tur Vadeli" sözleşme modelleri uygulanmaktadır.</li>
+                    <li><strong>Lojistik ve Transfer:</strong> Stoklu MC-26 işlemci modüllerinin B2B sevkiyatları sipariş onayının ardından aynı gün lojistik merkezine teslim edilir.</li>
+                    <li><strong>B2C Vadeli Satış:</strong> SmartBox ürünlerinde bireysel müşterilerimiz için peşin ödemenin yanında vadeli ödeme seçenekleri sunulmaktadır.</li>
+                </ul>
+            </div>
+
+            <div class="alert-box">
+                <span style="font-size: 1.5rem;">⚠️</span>
+                <div>
+                    <strong>Online Web Alışverişi Uyarısı:</strong> Sitemiz üzerinden doğrudan web alışverişi ve "Sepete Ekle / Satın Al" bağlantıları, <strong>lig yöneticisinin geçiş onayından sonra etkinleşecektir</strong>. Siparişleriniz için lütfen aşağıdaki iletişim formunu kullanınız[cite: 13].
+                </div>
+            </div>
+        </section>
+
+        <section id="departmanlar">
+            <div class="section-header">
+                <h2>Departman Yönetimi</h2>
+                <p>Entegre kurumsal yapımız ve görev dağılımı.</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Dijital Pazarlama ve Ürün Yönetimi</h3>
+                    <p>Pazar payı analizleri, perakende fiyatlama politikaları ve web e-ticaret vitrininin koordinasyonu bu birim tarafından yürütülmektedir.</p>
+                    <p style="margin-top: 0.5rem; font-weight:600; color:var(--accent);">Departman Sorumlusu: Ayça Nur Selim</p>
+                </div>
+                <div class="card">
+                    <h3>BT, Veri Analitiği ve Operasyon</h3>
+                    <p>Sistem altyapısı, B2B entegrasyon formları, tedarik risk matrisi optimizasyonu ve ALYA-26 sevk kayıtlarının takibi sağlanmaktadır.</p>
+                    <p style="margin-top: 0.5rem; font-weight:600; color:var(--accent);">Departman: Bilgi Teknolojileri ve Üretim</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="iletisim">
+            <div class="section-header">
+                <h2>İletişim & B2B Sipariş Formu</h2>
+                <p>Toplu siparişler, vadeli anlaşmalar ve kurumsal bilgi talepleri.</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <form onsubmit="event.preventDefault(); alert('Talebiniz kaydedilmiştir. Lig yöneticisi onayı sonrası işleme alınacaktır.');">
+                        <div class="form-group">
+                            <label for="compName">Şirket Adı / Alıcı:</label>
+                            <input type="text" id="compName" placeholder="Örn: BulutOS veya Şirket Ünvanı" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productSelect">Talep Edilen Ürün:</label>
+                            <select id="productSelect">
+                                <option>MC-26 İşlemci Modülü (B2B)</option>
+                                <option>SmartBox Akıllı Asistan (B2C / Toptan)</option>
+                                <option>Sensör Kiti (B2B)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="terms">Ödeme Tercihi:</label>
+                            <select id="terms">
+                                <option>Peşin Ödeme</option>
+                                <option>1 Tur Vadeli (B2B Sözleşmeli)</option>
+                                <option>Vadeli / Taksitli (B2C)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Sipariş Notları ve Hacim:</label>
+                            <textarea id="notes" rows="3" placeholder="Talep edilen adet ve teslimat notları..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Talebi Gönder</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>Kurumsal Merkez ve Doğrulama</h3>
+                    <p><strong>Genel Merkez:</strong> MikroCore Teknoloji Kampüsü, Kocaeli</p>
+                    <p><strong>E-Posta:</strong> info@mikrocore.com</p>
+                    <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid var(--border);">
+                    <div style="background-color: var(--background); padding: 1rem; border-radius: 6px;">
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem;">Sistem Sevk Doğrulama (MIS)</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">ALYA-26 kimlik öneki kayıt eşleştirmesi:</p>
+                        <input type="text" value="ALYA-26-G02-CONFIRMED" readonly style="font-family: monospace; font-size: 0.85rem; background: #e2e8f0; color: #334155;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 MikroCore Teknoloji A.Ş. Tüm Hakları Saklıdır. | Simülasyon Web/MIS Altyapısı</p>
+    </footer>
+
+</body>
+</html>
