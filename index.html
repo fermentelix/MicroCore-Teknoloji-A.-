@@ -256,7 +256,7 @@
             margin-bottom: 1rem;
         }
 
-        /* --- ÜRÜN KATALOĞU (YENİ DARK TEMA & TESLİMAT KOŞULLARI) --- */
+        /* --- ÜRÜN KATALOĞU (GÜNCELLENMİŞ DARK TEMA) --- */
         .product-grid-dark {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -603,6 +603,20 @@
             cursor: not-allowed;
         }
 
+        /* Görev Uyarısı Tasarımı (YENİ) */
+        .alert-box-warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+            padding: 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
         /* --- BAŞARILI SİPARİŞ EKRANI --- */
         .success-screen {
             background-color: #0b1524;
@@ -851,7 +865,7 @@
             </div>
         </section>
 
-        <!-- 4. ÜRÜN KATALOĞU (GÜNCELLENMİŞ DARK TEMA) -->
+        <!-- 4. ÜRÜN KATALOĞU -->
         <section id="katalog">
             <div class="section-header">
                 <h2>MikroCore Satış Kataloğu</h2>
@@ -870,7 +884,7 @@
                     
                     <div class="price-box-dark">
                         <div class="stock-badge-dark">
-                            <span class="dot-green"></span> 3.670 Adet Yüksek Stok
+                            <span class="dot-green"></span> 3.670 Adet Hazır Stok
                         </div>
                         <div class="price-row">
                             <span class="label">Ulusal Pazar:</span> 
@@ -918,7 +932,7 @@
                 </div>
             </div>
 
-            <!-- Teslimat ve Koşullar (GÖRSELDEKİ EKLENTİ) -->
+            <!-- Teslimat ve Koşullar -->
             <div class="conditions-section">
                 <h3 class="conditions-title">⚡ Teslimat, Ödeme ve Ticaret Koşulları</h3>
                 <div class="conditions-grid">
@@ -961,10 +975,19 @@
                     </div>
                 </div>
 
-                <!-- FORM ALANI (MAİL GÖNDERİMİ BURADAN YAPILIR) -->
+                <!-- FORM ALANI -->
                 <div id="formViewArea">
+                    
+                    <!-- GÖREV 5 İÇİN ZORUNLU UYARI KUTUSU -->
+                    <div class="alert-box-warning">
+                        <span style="font-size: 1.5rem;">⚠️</span>
+                        <div>
+                            <strong>Önemli Bilgilendirme:</strong> Lig kuralları gereği, web alışverişine hazırlıklarımız tamamlanmış olup, <strong>satın alma bağlantısı lig yöneticisinin geçiş onayından sonra etkinleşir.</strong> Sipariş talepleriniz ön kayıt olarak alınmaktadır.
+                        </div>
+                    </div>
+
                     <form id="orderForm" onsubmit="processCheckout(event)">
-                        <!-- Gizli alanlar: Mail formatı ve sepet verileri için -->
+                        <!-- Gizli alanlar -->
                         <input type="hidden" name="_subject" value="MİKROCORE YENİ SİPARİŞ TALEBİ!">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="Sepet_Detayi" id="hiddenCartData" value="">
@@ -1006,7 +1029,7 @@
                     </form>
                 </div>
 
-                <!-- BAŞARILI SİPARİŞ EKRANI (GİZLİ BAŞLAR) -->
+                <!-- BAŞARILI SİPARİŞ EKRANI -->
                 <div id="successViewArea" class="success-screen" style="display: none;">
                     <div class="success-icon">✓</div>
                     <div class="success-title">Sipariş Talebiniz Başarıyla Alındı!</div>
@@ -1141,12 +1164,10 @@
                 return;
             }
 
-            // Sepet detaylarını gizli inputlara aktar
             let cartDetailsString = cart.map(item => `${item.qty} Adet ${item.name}`).join(' | ');
             document.getElementById('hiddenCartData').value = cartDetailsString;
             document.getElementById('hiddenTotalData').value = document.getElementById('cartTotalVal').innerText;
 
-            // Formsubmit AJAX işlemi (Mail Gönderimi)
             const form = document.getElementById('orderForm');
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
@@ -1165,7 +1186,6 @@
             })
             .then(response => response.json())
             .then(data => {
-                // Gönderim başarılı olduğunda
                 let randomCode = Math.floor(1000 + Math.random() * 9000);
                 document.getElementById('trackingCode').innerText = "Takip Kodu: STK-" + randomCode;
 
