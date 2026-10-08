@@ -256,42 +256,6 @@
             margin-bottom: 1rem;
         }
 
-        .skills-heading, .resp-heading {
-            font-size: 0.72rem;
-            font-weight: 800;
-            color: #0f172a;
-            text-transform: uppercase;
-            margin-bottom: 0.4rem;
-            letter-spacing: 0.5px;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.35rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-tag {
-            background-color: #f0fdf4;
-            color: #166534;
-            border: 1px solid #bbf7d0;
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 0.15rem 0.45rem;
-            border-radius: 4px;
-        }
-
-        .resp-box {
-            background-color: #f8fafc;
-            border-left: 3px solid var(--accent);
-            padding: 0.6rem 0.8rem;
-            font-size: 0.78rem;
-            color: #334155;
-            line-height: 1.45;
-            border-radius: 0 6px 6px 0;
-        }
-
         /* --- ÜRÜN KATALOĞU --- */
         .product-grid {
             display: grid;
@@ -535,8 +499,13 @@
             transform: translateY(-2px);
             opacity: 0.95;
         }
+        
+        .btn-checkout:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
-        /* --- BAŞARILI SİPARİŞ EKRANI (GÖRSELE BİREBİR UYGUN TASARIM) --- */
+        /* --- BAŞARILI SİPARİŞ EKRANI --- */
         .success-screen {
             background-color: #0b1524;
             border: 1px solid #1e2d4d;
@@ -710,7 +679,6 @@
                 <p>MikroCore Teknoloji A.Ş.'nin çevik organizasyon yapısı ve karar verici ekibi</p>
             </div>
             <div class="team-grid">
-                <!-- İhsan Kaya -->
                 <div class="member-card">
                     <div>
                         <div class="badge-row">
@@ -723,7 +691,6 @@
                     </div>
                 </div>
 
-                <!-- Ayça Nur Selim -->
                 <div class="member-card">
                     <div>
                         <div class="badge-row">
@@ -736,7 +703,6 @@
                     </div>
                 </div>
 
-                <!-- Enes Aydoğan -->
                 <div class="member-card">
                     <div>
                         <div class="badge-row">
@@ -749,7 +715,6 @@
                     </div>
                 </div>
 
-                <!-- Hamza Emin Demir -->
                 <div class="member-card">
                     <div>
                         <div class="badge-row">
@@ -762,7 +727,6 @@
                     </div>
                 </div>
 
-                <!-- Zehra Yılmaz -->
                 <div class="member-card">
                     <div>
                         <div class="badge-row">
@@ -775,7 +739,6 @@
                     </div>
                 </div>
 
-                <!-- Muhammet Bilal Kara -->
                 <div class="member-card">
                     <div>
                         <div class="badge-row">
@@ -790,7 +753,7 @@
             </div>
         </section>
 
-        <!-- 4. ÜRÜN KATALOĞU (SEPETE EKLE BUTONLU) -->
+        <!-- 4. ÜRÜN KATALOĞU -->
         <section id="katalog">
             <div class="section-header">
                 <h2>MikroCore Satış Kataloğu</h2>
@@ -798,33 +761,27 @@
             </div>
 
             <div class="product-grid">
-                <!-- Ürün 1 -->
                 <div class="product-card">
                     <span class="card-tag tag-b2b">KURUMSAL B2B (UZMANLIK)</span>
                     <h3>MC-26 İşlemci Modülü</h3>
                     <p class="product-desc">Endüstri 4.0 donanım üreticileri için optimize edilmiş, düşük enerji tüketimli yüksek verimli işlemci mimarisi.</p>
-                    
                     <div class="price-box">
                         <div class="price">170 TL</div>
                         <div class="stock-info">📦 3.670 Adet Hazır Stok</div>
                     </div>
-                    
                     <button class="btn-add-cart" onclick="addToCart('MC-26 İşlemci Modülü', 170)">
                         + Sepete Ekle
                     </button>
                 </div>
 
-                <!-- Ürün 2 -->
                 <div class="product-card">
                     <span class="card-tag tag-b2c">PERAKENDE B2C</span>
                     <h3>SmartBox Akıllı Asistan</h3>
                     <p class="product-desc">Yeni nesil akıllı ev ekosistemleri için, sesli komut ve merkezi otomasyon özellikli akıllı yaşam cihazı.</p>
-                    
                     <div class="price-box">
                         <div class="price">5.500 TL</div>
                         <div class="stock-info">⚡ Yüksek Hacimli / Ön Sipariş</div>
                     </div>
-                    
                     <button class="btn-add-cart" onclick="addToCart('SmartBox Akıllı Asistan', 5500)">
                         + Sepete Ekle
                     </button>
@@ -845,47 +802,52 @@
                     <div class="cart-items" id="cartItemsContainer">
                         <div class="empty-cart-msg">Sepetinizde henüz ürün bulunmamaktadır.<br>Katalogdan ürün ekleyebilirsiniz.</div>
                     </div>
-                    
                     <div class="cart-total">
                         <span>Toplam:</span>
                         <span id="cartTotalVal">0 TL</span>
                     </div>
                 </div>
 
-                <!-- FORM ALANI VEYA BAŞARI EKRANI -->
+                <!-- FORM ALANI (MAİL GÖNDERİMİ BURADAN YAPILIR) -->
                 <div id="formViewArea">
                     <form id="orderForm" onsubmit="processCheckout(event)">
+                        <!-- Gizli alanlar: Mail formatı ve sepet verileri için -->
+                        <input type="hidden" name="_subject" value="MİKROCORE YENİ SİPARİŞ TALEBİ!">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="Sepet_Detayi" id="hiddenCartData" value="">
+                        <input type="hidden" name="Toplam_Tutar" id="hiddenTotalData" value="">
+
                         <div class="form-grid-2">
                             <div class="form-group-dark">
                                 <label>Ad Soyad / Yetkili</label>
-                                <input type="text" placeholder="Adınız Soyadınız" required>
+                                <input type="text" name="Musteri_AdSoyad" placeholder="Adınız Soyadınız" required>
                             </div>
                             <div class="form-group-dark">
                                 <label>Kurum / Şirket Adı</label>
-                                <input type="text" placeholder="Örn: BulutOS A.Ş. (Bireyselse boş bırakın)">
+                                <input type="text" name="Kurum_Sirket_Adi" placeholder="Örn: BulutOS A.Ş. (Bireyselse boş bırakın)">
                             </div>
                         </div>
 
                         <div class="form-group-dark">
                             <label>İletişim E-posta</label>
-                            <input type="email" placeholder="ornek@sirket.com" required>
+                            <input type="email" name="Musteri_Eposta" placeholder="ornek@sirket.com" required>
                         </div>
 
                         <div class="form-group-dark">
                             <label>Ödeme Tercihi</label>
-                            <select required>
+                            <select name="Odeme_Tipi" required>
                                 <option value="">Lütfen seçiniz...</option>
-                                <option>Peşin Ödeme (Kredi Kartı / Havale)</option>
-                                <option>1 Tur Vadeli Sözleşme (Sadece Onaylı B2B)</option>
+                                <option value="Peşin">Peşin Ödeme (Kredi Kartı / Havale)</option>
+                                <option value="Vadeli">1 Tur Vadeli Sözleşme (Sadece Onaylı B2B)</option>
                             </select>
                         </div>
 
                         <div class="form-group-dark">
                             <label>Teslimat Adresi ve Sipariş Notu</label>
-                            <textarea rows="3" placeholder="Açık adres veya toplu sipariş iskontosu notunuz..."></textarea>
+                            <textarea rows="3" name="Siparis_Notu" placeholder="Açık adres veya toplu sipariş iskontosu notunuz..."></textarea>
                         </div>
 
-                        <button type="submit" class="btn-checkout">
+                        <button type="submit" class="btn-checkout" id="submitBtn">
                             🔒 Siparişi Tamamla
                         </button>
                     </form>
@@ -904,11 +866,11 @@
             </div>
         </section>
 
-        <!-- 6. İLETİŞİM / E-POSTA ADRESLERİ -->
+        <!-- 6. İLETİŞİM / E-POSTA ADRESLERİ (YENİ VE DAHA BELİRGİN EKLENDİ) -->
         <section id="iletisim">
             <div class="section-header">
                 <h2>İletişim Bilgilerimiz</h2>
-                <p>Kurumsal görüşmeler ve iş ortaklıkları için departman yetkililerimize doğrudan ulaşabilirsiniz.</p>
+                <p>Kurumsal görüşmeler ve B2B iş ortaklıkları için departman yetkililerimize doğrudan ulaşabilirsiniz.</p>
             </div>
             
             <div class="contact-grid">
@@ -951,7 +913,7 @@
         <p>&copy; 2026 MikroCore Teknoloji A.Ş. (G02) — Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- JAVASCRIPT KODLARI -->
+    <!-- JAVASCRIPT KODLARI (MAİL GÖNDERİM SİSTEMİ DAHİL) -->
     <script>
         let cart = [];
 
@@ -964,7 +926,6 @@
             }
             updateCartUI();
             
-            // Eğer başarı ekranındaysa, tekrar formu aç
             if(document.getElementById('successViewArea').style.display === 'flex') {
                 resetOrder();
             }
@@ -1026,23 +987,52 @@
                 alert("Siparişi tamamlamak için lütfen önce sepetinize ürün ekleyin!");
                 return;
             }
-            
-            // Rastgele Takip Kodu Üret (STK-XXXX)
-            let randomCode = Math.floor(1000 + Math.random() * 9000);
-            document.getElementById('trackingCode').innerText = "Takip Kodu: STK-" + randomCode;
 
-            // Formu Gizle, Başarı Ekranını Göster
-            document.getElementById('formViewArea').style.display = 'none';
-            document.getElementById('successViewArea').style.display = 'flex';
+            // Sepet detaylarını gizli inputlara aktar
+            let cartDetailsString = cart.map(item => `${item.qty} Adet ${item.name}`).join(' | ');
+            document.getElementById('hiddenCartData').value = cartDetailsString;
+            document.getElementById('hiddenTotalData').value = document.getElementById('cartTotalVal').innerText;
+
+            // Formsubmit AJAX işlemi (Mail Gönderimi)
+            const form = document.getElementById('orderForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerHTML = "⏳ Sipariş İletiliyor...";
+            submitBtn.disabled = true;
+
+            fetch("https://formsubmit.co/ajax/aycanurselim314@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Gönderim başarılı olduğunda
+                let randomCode = Math.floor(1000 + Math.random() * 9000);
+                document.getElementById('trackingCode').innerText = "Takip Kodu: STK-" + randomCode;
+
+                document.getElementById('formViewArea').style.display = 'none';
+                document.getElementById('successViewArea').style.display = 'flex';
+                
+                submitBtn.innerHTML = "🔒 Siparişi Tamamla";
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                alert("Sipariş alınırken bir ağ hatası oluştu, lütfen tekrar deneyiniz.");
+                submitBtn.innerHTML = "🔒 Siparişi Tamamla";
+                submitBtn.disabled = false;
+            });
         }
 
         function resetOrder() {
-            // Sepeti ve Formu Sıfırla
             cart = [];
             updateCartUI();
             document.getElementById('orderForm').reset();
-            
-            // Başarı Ekranını Gizle, Formu Tekrar Göster
             document.getElementById('successViewArea').style.display = 'none';
             document.getElementById('formViewArea').style.display = 'block';
         }
