@@ -207,6 +207,27 @@
         .dot-blink { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: flash 1s infinite; }
         @keyframes flash { 0%, 100% {opacity: 1;} 50% {opacity: 0.2;} }
 
+        /* --- YATAY SATIR KARTLARI --- */
+        .row-grid { display: grid; gap: 1.5rem; }
+        .info-box {
+            border: 1px solid var(--border-dim);
+            background: var(--bg-surface);
+            padding: 2rem;
+            transition: border 0.3s;
+        }
+        .info-box:hover { border-color: var(--border-light); }
+        .info-box h3 { margin-bottom: 1rem; font-size: 1.2rem; }
+
+        .team-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--border-dim); border: 1px solid var(--border-dim);
+        }
+        .team-box {
+            background: var(--bg-surface); padding: 2rem;
+        }
+        .team-dept { font-family: var(--font-mono); color: var(--accent); font-size: 0.75rem; margin-bottom: 1rem; display: block; }
+        .team-name { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.2rem; }
+        .team-title { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
+
         /* --- ÜRÜN KATALOĞU --- */
         .product-list { display: flex; flex-direction: column; gap: 1rem; }
         .prod-row {
@@ -238,7 +259,14 @@
         }
         .btn-add:hover { background: var(--accent); color: var(--bg-base); }
 
-        /* --- MİYALİYET & FİYAT ANALİZİ EKRANI (6. GÖREV) --- */
+        .conditions-bar {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-dim); border: 1px solid var(--border-dim); margin-top: 2rem;
+        }
+        .cond-item { background: var(--bg-surface); padding: 1.5rem; text-align: center; }
+        .cond-item h4 { font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-main); }
+        .cond-item p { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* --- MİYALİYET & FİYAT ANALİZİ EKRANI --- */
         .analysis-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -345,6 +373,23 @@
         .term-success p { color: var(--text-terminal); font-family: var(--font-mono); }
         .auth-code { font-size: 2rem; color: var(--text-main); border: 2px dashed var(--border-light); padding: 1rem 3rem; letter-spacing: 5px; }
 
+        /* --- İLETİŞİM VE ONAY KODU --- */
+        .contact-top { text-align: center; margin-bottom: 4rem; }
+        .approval-box {
+            display: inline-block; margin-top: 2rem; padding: 1.5rem 3rem;
+            border: 1px solid var(--border-light); background: var(--bg-surface);
+        }
+        .approval-box p { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .approval-code {
+            font-size: 2rem; font-weight: 900; color: var(--accent); font-family: var(--font-mono); letter-spacing: 2px;
+        }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: var(--border-dim); border: 1px solid var(--border-dim); }
+        .contact-box { background: var(--bg-surface); padding: 2rem; text-align: center; }
+        .contact-box h4 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .contact-box p { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1rem; text-transform: uppercase; font-family: var(--font-mono); }
+        .contact-box a { color: var(--accent); text-decoration: none; font-family: var(--font-mono); font-size: 0.85rem; }
+
         footer { text-align: center; padding: 2rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border-dim); }
 
         /* MOBİL UYUM */
@@ -353,6 +398,7 @@
             .nav-capsule { width: 90%; justify-content: space-between; }
             .hero h1 { font-size: 2.5rem; }
             .prod-row { grid-template-columns: 1fr; }
+            .conditions-bar { grid-template-columns: 1fr 1fr; }
             .analysis-grid { grid-template-columns: 1fr; }
             .term-form-grid { grid-template-columns: 1fr; }
             .term-body { padding: 1.5rem; }
@@ -361,18 +407,21 @@
 </head>
 <body>
 
+    <!-- YENİ KAPSÜL NAVİGASYON -->
     <div class="nav-wrapper">
         <div class="nav-capsule">
             <div class="brand">MIKROCORE <span>[G02]</span></div>
             <div class="nav-links">
                 <a href="#katalog">Katalog</a>
                 <a href="#analiz">Maliyet Analizi</a>
+                <a href="#ekip">Yönetim</a>
                 <a href="#iletisim">İletişim</a>
             </div>
             <a href="#checkout" class="cart-btn">SEPET [<span id="navCartCount">0</span>]</a>
         </div>
     </div>
 
+    <!-- HERO -->
     <header class="hero">
         <div class="hero-inner">
             <div class="hero-tag">// B2B & B2C ENDÜSTRİYEL DONANIM AĞI</div>
@@ -389,18 +438,84 @@
                     <div class="kpi-label">Üretim Durumu</div>
                 </div>
                 <div class="kpi-item">
-                    <div class="kpi-val">3.670</div>
+                    <div class="kpi-val">9.207</div>
                     <div class="kpi-label">Hazır İşlemci Stoğu</div>
                 </div>
                 <div class="kpi-item">
                     <div class="kpi-val">İDEAL_AĞ</div>
                     <div class="kpi-label">Çalışan Memnuniyeti</div>
                 </div>
+                <div class="kpi-item">
+                    <div class="kpi-val" style="color:var(--text-muted);">MİNİMUM</div>
+                    <div class="kpi-label">Lojistik Hasar</div>
+                </div>
             </div>
         </div>
     </header>
 
     <div class="container">
+        
+        <!-- HAKKIMIZDA -->
+        <section id="hakkimizda">
+            <div class="sec-title">Kurumsal Protokol</div>
+            <div class="sec-desc">Veri odaklı yönetim ve sürdürülebilir vizyon.</div>
+            
+            <div class="row-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="info-box">
+                    <h3>Biz Kimiz?</h3>
+                    <p>Kurumsal donanım pazarında uzmanlaşmış yapımızla sektörün lider teknoloji ekosistemlerinden biriyiz. Çevik yönetim (Agile) karar destek mekanizmalarımızla yüksek kapasiteli üretim sağlıyoruz.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Misyon / Vizyon</h3>
+                    <p><strong>Misyon:</strong> Yüksek performanslı ve erişilebilir teknolojik donanımları kesintisiz tedarik zinciri güvencesiyle üretmek.<br><br><strong>Vizyon:</strong> Risk yönetimi modelleriyle global donanım ekosisteminde standart belirleyici lider konumda kalmak.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- YÖNETİM -->
+        <section id="ekip">
+            <div class="sec-title">Komuta Merkezi</div>
+            <div class="sec-desc">Organizasyon yapısı ve karar verici birimler.</div>
+            
+            <div class="team-grid">
+                <div class="team-box">
+                    <span class="team-dept">Genel Müdürlük | İşletme & YBS</span>
+                    <div class="team-name">İhsan Kaya</div>
+                    <div class="team-title">Genel Müdür (CEO)</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">Şirket stratejisi, teknoloji yatırımları ve kurumsal performanstan sorumludur.</p>
+                </div>
+                <div class="team-box">
+                    <span class="team-dept">Pazarlama & Ürün | YBS</span>
+                    <div class="team-name">Ayça Nur Selim</div>
+                    <div class="team-title">Dijital Pazarlama Yöneticisi</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">B2B/B2C pazarlama, marka konumlandırma ve e-ticaret altyapı yönetimi.</p>
+                </div>
+                <div class="team-box">
+                    <span class="team-dept">Operasyon & Lojistik | Süreç Mod.</span>
+                    <div class="team-name">Enes Aydoğan</div>
+                    <div class="team-title">Operasyon Direktörü</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">Üretim planlaması, montaj bandı verimliliği ve B2B lojistik akışı.</p>
+                </div>
+                <div class="team-box">
+                    <span class="team-dept">Finans & Risk | Mali Denetim</span>
+                    <div class="team-name">Hamza Emin Demir</div>
+                    <div class="team-title">Finans Müdürü</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">Nakit akışı yönetimi ve operasyonların kurumsal etik denetimi.</p>
+                </div>
+                <div class="team-box">
+                    <span class="team-dept">Bilişim & Veri | Bilgisayar Müh.</span>
+                    <div class="team-name">Zehra Yılmaz</div>
+                    <div class="team-title">BT ve Veri Yapıları Müdürü</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">Teknoloji altyapısı, veri mimarisi ve bilgi güvenliği yönetimi.</p>
+                </div>
+                <div class="team-box">
+                    <span class="team-dept">İK & Tedarik | YBS</span>
+                    <div class="team-name">Muhammet Bilal Kara</div>
+                    <div class="team-title">İK ve Tedarik Müdürü</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">İnsan kaynağı planlaması ve satın alma süreçleri koordinasyonu.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- ÜRÜN KATALOĞU -->
         <section id="katalog">
@@ -431,47 +546,66 @@
                     </div>
                     <div class="prod-specs">
                         <div class="spec-line"><span>Stok_Durumu:</span> <span class="spec-val" style="color:orange;">SINIRLI_ÖNSİPARİŞ</span></div>
-                        <div class="spec-line"><span>Fiyat_TR:</span> <span class="spec-val">10.000 ₺</span></div>
-                        <div class="spec-line"><span>Fiyat_EU:</span> <span class="spec-val">285 €</span></div>
+                        <div class="spec-line"><span>Fiyat_TR:</span> <span class="spec-val">5.500 ₺</span></div>
+                        <div class="spec-line"><span>Fiyat_EU:</span> <span class="spec-val">155 €</span></div>
                     </div>
-                    <button class="btn-add" onclick="addToCart('SmartBox Akıllı Asistan', 10000)">Sepete Ekle</button>
+                    <button class="btn-add" onclick="addToCart('SmartBox Akıllı Asistan', 5500)">Sepete Ekle</button>
                 </div>
 
             </div>
+
+            <div class="conditions-bar">
+                <div class="cond-item">
+                    <h4>Anında Teslimat</h4>
+                    <p>Hazır MC-26 stoğu ile beklemeden operasyon.</p>
+                </div>
+                <div class="cond-item">
+                    <h4>Takas / Barter</h4>
+                    <p>Şirketler arası ürün/bileşen takas anlaşması.</p>
+                </div>
+                <div class="cond-item">
+                    <h4>Esnek Ödeme</h4>
+                    <p>Vadeli protokol veya peşin işlem seçenekleri.</p>
+                </div>
+                <div class="cond-item">
+                    <h4>B2B İndirimi</h4>
+                    <p>Yüksek adetli taleplerde sözleşme tabanlı iskontolar.</p>
+                </div>
+            </div>
         </section>
 
-        <!-- MALİYET VE FİYAT ANALİZİ EKRANI (İSTENEN GÖREV) -->
+        <!-- GÜNCELLENMİŞ GÖREV: MALİYET VE FİYAT ANALİZİ EKRANI -->
         <section id="analiz">
             <div class="sec-title">Maliyet & Fiyat Analizi</div>
-            <div class="sec-desc">SmartBox Akıllı Asistan (B2C) üretim bandı için 8 bileşen, montaj, sevkiyat ve senaryo metrikleri.</div>
+            <div class="sec-desc">SmartBox Akıllı Asistan (B2C) üretim bandı bileşenleri, montaj, sevkiyat ve senaryo metrikleri.</div>
 
             <div class="analysis-grid">
                 <!-- Üretim ve Lojistik Maliyetleri (8 Bileşen + Montaj + Sevkiyat) -->
                 <div class="analysis-box">
                     <h4>>_BİLEŞEN_VE_LOJİSTİK_MALİYETLERİ</h4>
                     <ul class="cost-list">
-                        <li><span>1. MC-26 Çekirdek İşlemci</span> <span>1.100 ₺</span></li>
+                        <li><span style="color:var(--accent);">1. MC-26 Çekirdek İşlemci (Kendi Üretimimiz)</span> <span style="color:var(--accent);">130 ₺</span></li>
                         <li><span>2. Anakart Modülü (PCB)</span> <span>650 ₺</span></li>
                         <li><span>3. Bellek (RAM) Ünitesi</span> <span>420 ₺</span></li>
-                        <li><span>4. İletişim & Ağ Sensörü</span> <span>380 ₺</span></li>
-                        <li><span>5. Soğutma Bloğu</span> <span>250 ₺</span></li>
-                        <li><span>6. Güç Kaynağı Modülü</span> <span>400 ₺</span></li>
-                        <li><span>7. Akustik İletişim / Hoparlör</span> <span>300 ₺</span></li>
+                        <li><span>4. BulutOS Ağ ve Yazılım Lisansı</span> <span>380 ₺</span></li>
+                        <li><span>5. Endüstriyel Sensör Kiti</span> <span>250 ₺</span></li>
+                        <li><span>6. Yüksek Kapasiteli Enerji Modülü</span> <span>400 ₺</span></li>
+                        <li><span>7. Soğutma Bloğu</span> <span>300 ₺</span></li>
                         <li><span>8. Dış Kasa / Gövde</span> <span>250 ₺</span></li>
                         <li style="border-top: 1px solid var(--border-light); margin-top:1rem; padding-top:1rem;">
-                            <span style="color:var(--accent);">+ MONTAJ & TEST GİDERİ</span> <span>450 ₺</span>
+                            <span style="color:var(--text-main);">+ MONTAJ & TEST</span> <span>450 ₺</span>
                         </li>
                         <li>
-                            <span style="color:orange;">+ SİGORTALI SEVKİYAT GİDERİ</span> <span>300 ₺</span>
+                            <span style="color:orange;">+ SİGORTALI SEVKİYAT</span> <span>300 ₺</span>
                         </li>
                     </ul>
                     <div class="total-cost">
                         <span>TOPLAM BİRİM MALİYET:</span>
-                        <span style="color:var(--accent);">4.500 ₺</span>
+                        <span style="color:var(--accent);">3.530 ₺</span>
                     </div>
                 </div>
 
-                <!-- Fiyatlandırma ve Marj Senaryoları (3 Senaryo) -->
+                <!-- Fiyatlandırma ve Marj Senaryoları -->
                 <div class="analysis-box">
                     <h4>>_FİYAT_VE_KAR_SENARYOLARI</h4>
                     
@@ -481,33 +615,33 @@
                             <span>4.950 ₺</span>
                         </div>
                         <div class="scenario-metrics">
-                            <span>Net Kâr: 450 ₺</span>
-                            <span>Kâr Marjı: %10</span>
-                            <span style="color:var(--accent);">Düşük Marj - Yüksek Hacim</span>
+                            <span>Net Kâr: 1.420 ₺</span>
+                            <span>Kâr Marjı: %28.6</span>
+                            <span style="color:var(--accent);">Standart Marj - Yüksek Hacim</span>
                         </div>
                     </div>
 
                     <div class="scenario-box">
                         <div class="scenario-title">
-                            <span>SENARYO_02: PEŞİN PERAKENDE</span>
-                            <span>10.000 ₺</span>
+                            <span>SENARYO_02: PEŞİN PERAKENDE (Güncel)</span>
+                            <span>5.500 ₺</span>
                         </div>
                         <div class="scenario-metrics">
-                            <span>Net Kâr: 5.500 ₺</span>
-                            <span>Kâr Marjı: %55</span>
-                            <span style="color:var(--accent);">Yüksek Marj - Tam Satış</span>
+                            <span>Net Kâr: 1.970 ₺</span>
+                            <span>Kâr Marjı: %35.8</span>
+                            <span style="color:var(--accent);">Yüksek Marj - Standart Hacim</span>
                         </div>
                     </div>
 
                     <div class="scenario-box">
                         <div class="scenario-title">
                             <span>SENARYO_03: VADELİ (TAKSİTLİ) B2C</span>
-                            <span>12.500 ₺</span>
+                            <span>6.300 ₺</span>
                         </div>
                         <div class="scenario-metrics">
-                            <span>Net Kâr: 8.000 ₺</span>
-                            <span>Kâr Marjı: %64</span>
-                            <span style="color:var(--accent);">Riskli Marj - Düşük Hacim</span>
+                            <span>Net Kâr: 2.770 ₺</span>
+                            <span>Kâr Marjı: %43.9</span>
+                            <span style="color:var(--accent);">Maksimum Marj - Düşük Hacim</span>
                         </div>
                     </div>
                 </div>
@@ -592,11 +726,56 @@
             </div>
         </section>
 
+        <!-- İLETİŞİM & BT KODU -->
+        <section id="iletisim">
+            <div class="contact-top">
+                <div class="sec-title" style="justify-content: center;">İletişim & Ağ</div>
+                <div class="sec-desc" style="margin-bottom: 0;">Bağlantı protokolleri ve departman iletişim noktaları.</div>
+                
+                <div class="approval-box">
+                    <p>BT_BİRİMİ_SİSTEM_DOĞRULAMA_KODU</p>
+                    <div class="approval-code">ALYA-26-02</div>
+                </div>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-box">
+                    <h4>İhsan Kaya</h4>
+                    <p>Genel Müdür</p>
+                    <a href="mailto:ihsan.kaya@example.com">ihsan.kaya@example.com</a>
+                </div>
+                <div class="contact-box">
+                    <h4>Ayça Nur Selim</h4>
+                    <p>Pazarlama & Ürün</p>
+                    <a href="mailto:aycanurselim314@gmail.com">aycanurselim314@gmail.com</a>
+                </div>
+                <div class="contact-box">
+                    <h4>Zehra Yılmaz</h4>
+                    <p>BT & Veri</p>
+                    <a href="mailto:zzehraylmaaz@gmail.com">zzehraylmaaz@gmail.com</a>
+                </div>
+                <div class="contact-box">
+                    <h4>Hamza Emin Demir</h4>
+                    <p>Finans & Risk</p>
+                    <a href="mailto:hamzademir01q@gmail.com">hamzademir01q@gmail.com</a>
+                </div>
+                <div class="contact-box">
+                    <h4>Enes Aydoğan</h4>
+                    <p>Operasyon & Lojistik</p>
+                    <a href="mailto:enesaydogan9677@gmail.com">enesaydogan9677@gmail.com</a>
+                </div>
+                <div class="contact-box">
+                    <h4>Muhammet Bilal Kara</h4>
+                    <p>İK & Tedarik</p>
+                    <a href="mailto:muhammetbilalkara54@gmail.com">muhammetbilalkara54@gmail.com</a>
+                </div>
+            </div>
+        </section>
+
     </div>
 
-    <footer id="iletisim">
-        &copy; 2026 MIKROCORE TEKNOLOJİ A.Ş. [G02] | SECURE NETWORK PROTOCOL <br>
-        İletişim: kurumsal@mikrocore.example.com
+    <footer>
+        &copy; 2026 MIKROCORE TEKNOLOJİ A.Ş. [G02] | SECURE NETWORK PROTOCOL
     </footer>
 
     <!-- JAVASCRIPT: SAAT, YENİ SEPET VE MAİL -->
