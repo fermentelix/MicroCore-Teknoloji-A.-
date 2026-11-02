@@ -601,6 +601,609 @@
         .form-group-dark select, 
         .form-group-dark textarea {
             background-color: var(--dark-card-inner);
+            border: 1px solid #1e2d4d;<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MikroCore Teknoloji A.Ş. (G02) | B2B & B2C E-Ticaret Portalı</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --surface: #ffffff;
+            --background: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --dark-card: #0b1329;
+            --dark-card-inner: #111c38;
+            --cyan-accent: #00d2ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* YARIM EKRAN KAYMASINI ÖNLEYEN KOD BURASI */
+        body {
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden; 
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand span.tag {
+            background-color: #2563eb;
+            color: #ffffff;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .cart-nav-btn {
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-left: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* --- GENEL YAPI --- */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- HERO (ANA SAYFA) --- */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem 5rem 1rem;
+            background: linear-gradient(180deg, #ffffff 0%, var(--background) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .badge-main {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--accent);
+            padding: 0.35rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* --- HOCANIN İSTEDİĞİ YENİ KPI (PERFORMANS) BÖLÜMÜ --- */
+        .kpi-section {
+            background-color: #0b1329;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid #1e293b;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .kpi-grid {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .kpi-card {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .kpi-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .kpi-value.green { color: #34d399; }
+        .kpi-value.purple { color: #c084fc; }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- HAKKIMIZDA & KARTLAR --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .info-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* --- DEPARTMAN / EKİP KARTLARI --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .member-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .dept-badge {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            border: 1px solid #dbeafe;
+        }
+
+        .specialty-badge {
+            background-color: #f1f5f9;
+            color: #475569;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .member-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .member-desc {
+            font-size: 0.82rem;
+            color: #475569;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* --- ÜRÜN KATALOĞU --- */
+        .product-grid-dark {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card-dark {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 2rem;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-card-dark h3 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .product-desc-dark {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .tags-dark {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tags-dark span {
+            border: 1px solid #334155;
+            background-color: transparent;
+            color: #94a3b8;
+            font-size: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 4px;
+        }
+
+        .price-box-dark {
+            background-color: #0b1120;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stock-badge-dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #34d399;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .stock-badge-dark.warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #fbbf24;
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        .dot-green {
+            width: 8px; height: 8px; background-color: #34d399; border-radius: 50%;
+        }
+        
+        .dot-orange {
+            width: 8px; height: 8px; background-color: #fbbf24; border-radius: 50%;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #1e293b;
+            padding-bottom: 0.5rem;
+        }
+
+        .price-row:last-of-type {
+            border-bottom: none;
+            margin-bottom: 1rem;
+        }
+
+        .price-row .label {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .price-row .val-tl {
+            color: #38bdf8;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .price-row .val-eu {
+            color: #38bdf8;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .price-box-dark .note {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #1e293b;
+        }
+        
+        .btn-add-cart-dark {
+            width: 100%;
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 0.9rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .btn-add-cart-dark:hover {
+            background-color: #1d4ed8;
+        }
+
+        .conditions-section {
+            background-color: #0f172a;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .conditions-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .condition-card {
+            background-color: #1e293b;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #334155;
+        }
+
+        .condition-card h4 {
+            color: #f8fafc;
+            font-size: 1.05rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .condition-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* --- SİPARİŞ / CHECKOUT FORMU --- */
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            background: linear-gradient(180deg, #070d1e 0%, #0b1329 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .cart-summary {
+            background-color: var(--dark-card-inner);
+            border: 1px solid #1e2d4d;
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: fit-content;
+        }
+
+        .cart-summary h4 {
+            font-size: 1.2rem;
+            border-bottom: 1px solid #1e2d4d;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            color: var(--cyan-accent);
+        }
+
+        .cart-items {
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0f172a;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            border: 1px solid #1e293b;
+        }
+
+        .item-details h5 {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            margin-bottom: 0.2rem;
+        }
+        .item-details p { font-size: 0.8rem; color: #94a3b8; }
+        
+        .item-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .qty-btn {
+            background: #334155;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-total {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #1e2d4d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+        
+        .empty-cart-msg {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            padding: 2rem 0;
+            font-style: italic;
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group-dark {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group-dark label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        .form-group-dark input, 
+        .form-group-dark select, 
+        .form-group-dark textarea {
+            background-color: var(--dark-card-inner);
             border: 1px solid #1e2d4d;
             border-radius: 6px;
             padding: 0.85rem;
@@ -608,6 +1211,12 @@
             font-size: 0.9rem;
             outline: none;
             transition: border-color 0.2s;
+        }
+
+        .form-group-dark input:focus, 
+        .form-group-dark select:focus, 
+        .form-group-dark textarea:focus {
+            border-color: var(--cyan-accent);
         }
 
         .btn-checkout {
@@ -671,6 +1280,17 @@
             padding: 0.8rem 1.8rem; border-radius: 6px; cursor: pointer; font-weight: 600;
         }
 
+        .btn-return-home {
+            background-color: #0f172a; color: #38bdf8; border: 1px solid #38bdf8;
+            padding: 0.8rem 1.8rem; border-radius: 6px; cursor: pointer; font-weight: 600;
+            margin-top: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-return-home:hover {
+            background-color: #1e293b;
+        }
+
         /* --- İLETİŞİM KARTLARI --- */
         .contact-grid {
             display: grid;
@@ -711,6 +1331,7 @@
             </div>
             <nav>
                 <a href="#anasayfa">Ana Sayfa</a>
+                <a href="#kriz">Kapasite & Kriz</a>
                 <a href="#hakkimizda">Hakkımızda</a>
                 <a href="#ekip">Yönetim</a>
                 <a href="#katalog">Ürünler</a>
@@ -745,12 +1366,54 @@
                 <div class="kpi-label">Hazır İşlemci Stoğu</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-value purple">%98</div>
-                <div class="kpi-label">Saha Çalışan Memnuniyeti</div>
+                <!-- Bildirimdeki 18 B2B sözleşme verisi buraya eklendi -->
+                <div class="kpi-value purple">18</div>
+                <div class="kpi-label">Tamamlanan B2B Sözleşme</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-value">0</div>
                 <div class="kpi-label">Lojistik Hasar Oranı</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YENİ GÖREV: STOK, KAPASİTE VE KRİZ (YEDEKLEME) YÖNETİMİ BÖLÜMÜ -->
+    <section id="kriz" style="background-color: var(--dark-card); padding: 4rem 1.5rem; border-bottom: 1px solid #1e293b;">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: var(--cyan-accent);">Stok, Kapasite ve Kriz Yönetim Paneli</h2>
+                <p style="color: #94a3b8;">Canlı stok verileri, üretim kapasitesi ve acil durum yedekleme (Blackout) protokolleri.</p>
+            </div>
+            
+            <div class="grid-2">
+                <!-- Kapasite ve Stok Durumu -->
+                <div class="info-card" style="background-color: var(--dark-card-inner); border: 1px solid #1e2d4d;">
+                    <h3 style="color: #ffffff; border-bottom: 2px solid var(--cyan-accent); display: inline-block; padding-bottom: 0.3rem;">Üretim & Stok Kapasitesi</h3>
+                    <ul style="list-style: none; padding:0; color: #cbd5e1; margin-top: 1rem;">
+                        <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed #1e2d4d;">
+                            <strong style="color: var(--cyan-accent);">Günlük Üretim Kapasitesi:</strong> Sistem %100 kapasite ile sorunsuz çalışmaktadır. Herhangi bir üretim darboğazı tespit edilmemiştir.
+                        </li>
+                        <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed #1e2d4d;">
+                            <strong style="color: var(--cyan-accent);">Mevcut Stok Durumu:</strong> Güncel üretim bantlarından çıkan toplam 3.670 Adet MC-26 İşlemci modülü anında sevkiyata hazırdır.
+                        </li>
+                        <li>
+                            <strong style="color: var(--cyan-accent);">B2B Operasyon ve Finans:</strong> Sistem tarafından toplam 18 adet B2B sözleşmesi başarıyla tamamlanmış olup ilgili stok ve finans kayıtları veri tabanına işlenmiştir.
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Yedekleme ve Kriz (Blackout) Planı -->
+                <div class="info-card" style="background-color: var(--dark-card-inner); border: 1px solid #1e2d4d;">
+                    <h3 style="color: #ffffff; border-bottom: 2px solid #fbbf24; display: inline-block; padding-bottom: 0.3rem;">Kriz & Yedekleme Planı</h3>
+                    <ul style="list-style: none; padding:0; color: #cbd5e1; margin-top: 1rem;">
+                        <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed #1e2d4d;">
+                            <strong style="color: #fbbf24;">Tedarik Yedekleme Planı:</strong> Kritik bileşenler için birincil tedarikçilerde yaşanabilecek olası kriz ve kesintilere karşı, 2. ve 3. seviye yedek tedarikçilerle (Tier-2/Tier-3) ön protokoller imzalanmış ve yedekleme ağı sisteme entegre edilmiştir.
+                        </li>
+                        <li>
+                            <strong style="color: #fbbf24;">İletişim & Ceza Risk Yönetimi (RED LINE):</strong> Lig yönetimi "Kırmızı Hat" kuralları gereği, şirket içi ve dışı tüm operasyonlarda İstanbul saatiyle <strong>23.00 - 08.00</strong> arasında "BLACKOUT" protokolü devreye alınmıştır. Bu saatler arasında gönderilen hiçbir e-postaya yanıt verilmeyecek olup, <strong>50.000 TL kasa cezası</strong> riski sistem tarafından tamamen sıfırlanmıştır.
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -877,7 +1540,7 @@
                     
                     <div class="price-box-dark">
                         <div class="stock-badge-dark">
-                            <span class="dot-green"></span> 9.207 Adet Hazır Stok
+                            <span class="dot-green"></span> 3.670 Adet Hazır Stok
                         </div>
                         <div class="price-row">
                             <span class="label">Ulusal Pazar:</span> 
@@ -906,7 +1569,7 @@
                     
                     <div class="price-box-dark">
                         <div class="stock-badge-dark warning">
-                            <span class="dot-orange"></span> Ön Siparişe Açık
+                            <span class="dot-orange"></span> Sınırlı Stok (Son Ürünler)
                         </div>
                         <div class="price-row">
                             <span class="label">Ulusal Pazar:</span> 
@@ -1092,6 +1755,62 @@
                     </form>
                 </div>
 
+                <!-- BAŞARILI SİPARİŞ EKRANI -->
+                <div id="successViewArea" class="success-screen" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <div class="success-title">Sipariş Talebiniz Başarıyla Alındı!</div>
+                    <div class="success-desc">Tedarik ve Satış departmanımız talebinizi inceleyerek belirtmiş olduğunuz kurumsal e-posta ve telefon üzerinden en kısa sürede sizinle iletişime geçecektir.</div>
+                    
+                    <div class="tracking-box" id="trackingCode">Takip Kodu: STK-3812</div>
+                    
+                    <button class="btn-new-order" onclick="resetOrder()">Yeni Sipariş Talebi Oluştur</button>
+                    <!-- YÖNLENDİRME BUTONU EKLENDİ -->
+                    <a href="https://dijital-sirketler-ligi-serhat-ata.ataserhat54.chatgpt.site/" class="btn-return-home">Ana Sayfaya Dön</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. İLETİŞİM / E-POSTA ADRESLERİ -->
+        <section id="iletisim">
+            <div class="section-header">
+                <h2>İletişim Bilgilerimiz</h2>
+                <p>Kurumsal görüşmeler ve B2B iş ortaklıkları için departman yetkililerimize doğrudan ulaşabilirsiniz.</p>
+                
+                <!-- BT ONAY GÖREV KODU EKLENDİ -->
+                <input type="text" value="ALYA-26-02" readonly style="font-family: monospace; font-size: 1.1rem; font-weight: bold; background: #1e293b; color: #34d399; border: 2px dashed #34d399; padding: 0.8rem; max-width: 250px; text-align: center; border-radius: 6px; margin: 1.5rem auto 0 auto; display: block; outline: none; cursor: default;" title="BT Birimi Doğrulama Kodu">
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h4>İhsan Kaya</h4>
+                    <p class="title">Genel Müdür</p>
+                    <a href="mailto:ihsan.kaya@example.com">✉ ihsan.kaya@example.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Ayça Nur Selim</h4>
+                    <p class="title">Dijital Pazarlama & Ürün</p>
+                    <a href="mailto:aycanurselim314@gmail.com">✉ aycanurselim314@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Zehra Yılmaz</h4>
+                    <p class="title">BT & Veri Yapıları</p>
+                    <a href="mailto:zzehraylmaaz@gmail.com">✉ zzehraylmaaz@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Hamza Emin Demir</h4>
+                    <p class="title">Finans & Risk</p>
+                    <a href="mailto:hamzademir01q@gmail.com">✉ hamzademir01q@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Enes Aydoğan</h4>
+                    <p class="title">Operasyon & Lojistik</p>
+                    <a href="mailto:enesaydogan9677@gmail.com">✉ enesaydogan9677@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h4>Muhammet Bilal Kara</h4>
+                    <p class="title">İK & Tedarik</p>
+                    <a href="mailto:muhammetbilalkara54@gmail.com">✉ muhammetbilalkara54@gmail.com</a>
+                </div>
             </div>
         </section>
 
@@ -1101,7 +1820,7 @@
         <p>&copy; 2026 MikroCore Teknoloji A.Ş. (G02) — Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- SEPET İŞLEMLERİ (JAVASCRIPT) -->
+    <!-- JAVASCRIPT KODLARI (MAİL GÖNDERİM SİSTEMİ DAHİL) -->
     <script>
         let cart = [];
 
@@ -1113,6 +1832,10 @@
                 cart.push({ name: name, price: price, qty: 1 });
             }
             updateCartUI();
+            
+            if(document.getElementById('successViewArea').style.display === 'flex') {
+                resetOrder();
+            }
             document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -1166,14 +1889,13 @@
         }
 
         function processCheckout(e) {
-            e.preventDefault();
-            
+            e.preventDefault(); 
             if (cart.length === 0) {
                 alert("Siparişi tamamlamak için lütfen önce sepetinize ürün ekleyin!");
                 return;
             }
 
-            let cartDetailsString = cart.map(item => `${item.qty}x ${item.name}`).join(' | ');
+            let cartDetailsString = cart.map(item => `${item.qty} Adet ${item.name}`).join(' | ');
             document.getElementById('hiddenCartData').value = cartDetailsString;
             document.getElementById('hiddenTotalData').value = document.getElementById('cartTotalVal').innerText;
 
@@ -1182,7 +1904,7 @@
             const data = Object.fromEntries(formData.entries());
             
             const submitBtn = document.getElementById('submitBtn');
-            submitBtn.innerHTML = "İletiliyor...";
+            submitBtn.innerHTML = "⏳ Sipariş İletiliyor...";
             submitBtn.disabled = true;
 
             fetch("https://formsubmit.co/ajax/aycanurselim314@gmail.com", {
@@ -1195,22 +1917,51 @@
             })
             .then(response => response.json())
             .then(data => {
-                alert("✅ SİPARİŞ TALEBİNİZ BAŞARIYLA ALINDI!\n\nTedarik birimi sizinle iletişime geçecektir.");
-                cart = [];
-                updateCartUI();
-                form.reset();
+                let randomCode = Math.floor(1000 + Math.random() * 9000);
+                document.getElementById('trackingCode').innerText = "Takip Kodu: STK-" + randomCode;
+
+                document.getElementById('formViewArea').style.display = 'none';
+                document.getElementById('successViewArea').style.display = 'flex';
+                
                 submitBtn.innerHTML = "🔒 Siparişi Tamamla";
                 submitBtn.disabled = false;
             })
             .catch(error => {
-                alert("✅ SİPARİŞ TALEBİNİZ BAŞARIYLA ALINDI!\n\nTedarik birimi sizinle iletişime geçecektir.");
-                cart = [];
-                updateCartUI();
-                form.reset();
+                alert("Sipariş alınırken bir ağ hatası oluştu, lütfen tekrar deneyiniz.");
                 submitBtn.innerHTML = "🔒 Siparişi Tamamla";
                 submitBtn.disabled = false;
             });
         }
+
+        function resetOrder() {
+            cart = [];
+            updateCartUI();
+            document.getElementById('orderForm').reset();
+            document.getElementById('successViewArea').style.display = 'none';
+            document.getElementById('formViewArea').style.display = 'block';
+        }
     </script>
 </body>
 </html>
+        .btn-return-home {
+            background-color: #0f172a; color: #38bdf8; border: 1px solid #38bdf8;
+            padding: 0.8rem 1.8rem; border-radius: 6px; cursor: pointer; font-weight: 600;
+            margin-top: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-return-home:hover {
+            background-color: #1e293b;
+        }
+
+        /* --- İLETİŞİM KARTLARI --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .contact-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
